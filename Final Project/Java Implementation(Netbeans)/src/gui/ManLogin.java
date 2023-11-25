@@ -45,7 +45,6 @@ public class ManLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 10));
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 433));
 
         userid.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +132,7 @@ public class ManLogin extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel3)
                         .addGap(203, 203, 203)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,7 +155,7 @@ public class ManLogin extends javax.swing.JFrame {
                     .addComponent(jbreset)
                     .addComponent(jButton1)
                     .addComponent(jbexit))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
