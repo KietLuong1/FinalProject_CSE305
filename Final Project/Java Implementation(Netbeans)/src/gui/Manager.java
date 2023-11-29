@@ -304,14 +304,14 @@ public class Manager extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 
-    public void display(String[] lr,String id){
-        jLabel2.setText(lr[0]);
-         jLabel3.setText(lr[1]);
-         jLabel5.setText(id);
-         kr=id;
-         src=lr;
-        
-    } 
+//    public void display(String[] lr,String id){
+//        jLabel2.setText(lr[0]);
+//         jLabel3.setText(lr[1]);
+//         jLabel5.setText(id);
+//         kr=id;
+//         src=lr;
+//        
+//    } 
      private void close(){
         WindowEvent winclosingEvent=new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winclosingEvent);
