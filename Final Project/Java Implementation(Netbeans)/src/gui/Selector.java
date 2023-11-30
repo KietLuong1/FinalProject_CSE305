@@ -8,8 +8,8 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import gui.LoginForm;
 import gui.EmployeeRegistration;
-import gui.ManLogin;
-import gui.Manreg;
+import gui.ManagerLogin;
+import gui.ManagerRegistration;
 
 /**
  *
@@ -224,13 +224,13 @@ public class Selector extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ManLogin ml=new ManLogin();
+        ManagerLogin ml=new ManagerLogin();
         ml.setVisible(true);
         close();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Manreg m=new Manreg();
+        ManagerRegistration m=new ManagerRegistration();
         m.setVisible(true);
         close();
     }//GEN-LAST:event_jButton1ActionPerformed

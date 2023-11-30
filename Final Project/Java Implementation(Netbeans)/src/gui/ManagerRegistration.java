@@ -15,13 +15,13 @@ import mypackage.Createfile;
  *
  * @author vinay
  */
-public class Manreg extends javax.swing.JFrame {
+public class ManagerRegistration extends javax.swing.JFrame {
     
 
     /**
      * Creates new form registration
      */
-    public Manreg() {
+    public ManagerRegistration() {
         initComponents();
     }
 
@@ -355,7 +355,7 @@ public class Manreg extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(null,"Registartion Successful");
               
-        ManLogin frm= new ManLogin();
+        ManagerLogin frm= new ManagerLogin();
         frm.setVisible(true);
         close();
                 /* regfname.setText(null);
@@ -424,14 +424,34 @@ public class Manreg extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Manreg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Manreg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Manreg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Manreg.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagerRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+     /*   Createfile g=new Createfile();
+        g.openfile("setid");
+        g.addrecords("setname","setage","setpass");
+        g.closefile();*/
+       // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
+      /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
+            regname.setText(null);
+       regpass.setText(null);
+       regid.setText(null);
+        //</editor-fold>
+     /*   Createfile g=new Createfile();
+        g.openfile("setid");
+        g.addrecords("setname","setage","setpass");
+        g.closefile();*/
+       // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
+      /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
+            regname.setText(null);
+       regpass.setText(null);
+       regid.setText(null);
         //</editor-fold>
      /*   Createfile g=new Createfile();
         g.openfile("setid");
@@ -458,7 +478,7 @@ public class Manreg extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Manreg().setVisible(true);
+                new ManagerRegistration().setVisible(true);
             }
         });
     }
