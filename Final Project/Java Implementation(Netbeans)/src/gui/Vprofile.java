@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import mypackage.Readfile;
-import gui.loginform;
+import gui.LoginForm;
 /**
  *
  * @author vinay

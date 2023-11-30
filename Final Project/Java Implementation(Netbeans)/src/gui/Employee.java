@@ -16,7 +16,7 @@ import mypackage.Createfile;
 import mypackage.Readfile;
 import mypackage.Requestlist;
 import mypackage.Requestlist2;
-import gui.loginform;
+import gui.LoginForm;
 /**
  *
  * @author vinay
@@ -268,7 +268,7 @@ public class Employee extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.hide();
-        loginform frm= new loginform();
+        LoginForm frm= new LoginForm();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

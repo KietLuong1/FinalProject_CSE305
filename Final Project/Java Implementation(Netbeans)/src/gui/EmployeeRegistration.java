@@ -15,7 +15,7 @@ import mypackage.Createfile;
  *
  * @author vinay
  */
-public class registration extends javax.swing.JFrame {
+public class EmployeeRegistration extends javax.swing.JFrame {
     public String setid;
     public String setpass;
     public String setname;
@@ -24,7 +24,7 @@ public class registration extends javax.swing.JFrame {
     /**
      * Creates new form registration
      */
-    public registration() {
+    public EmployeeRegistration() {
         initComponents();
     }
 
@@ -347,7 +347,7 @@ public class registration extends javax.swing.JFrame {
                             regage.setText(null);*/
                             this.hide();
                             //SystemExit();
-                            loginform frm= new loginform();
+                            LoginForm frm= new LoginForm();
                             frm.setVisible(true);
                             close();
                         }}}}
@@ -380,14 +380,24 @@ public class registration extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(registration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(registration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(registration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(registration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+     /*   Createfile g=new Createfile();
+        g.openfile("setid");
+        g.addrecords("setname","setage","setpass");
+        g.closefile();*/
+       // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
+      /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
+            regname.setText(null);
+       regpass.setText(null);
+       regid.setText(null);
         //</editor-fold>
      /*   Createfile g=new Createfile();
         g.openfile("setid");
@@ -404,7 +414,7 @@ public class registration extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new registration().setVisible(true);
+                new EmployeeRegistration().setVisible(true);
             }
         });
     }

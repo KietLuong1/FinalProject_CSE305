@@ -6,8 +6,8 @@
 package gui;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
-import gui.loginform;
-import gui.registration;
+import gui.LoginForm;
+import gui.EmployeeRegistration;
 import gui.ManLogin;
 import gui.Manreg;
 
@@ -236,13 +236,13 @@ public class Selector extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void loginbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbuttonActionPerformed
-        loginform l=new loginform();
+        LoginForm l=new LoginForm();
         l.setVisible(true);
         close();
     }//GEN-LAST:event_loginbuttonActionPerformed
 
     private void regbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regbuttonActionPerformed
-        registration r=new registration();
+        EmployeeRegistration r=new EmployeeRegistration();
         r.setVisible(true);
         close();
     }//GEN-LAST:event_regbuttonActionPerformed
