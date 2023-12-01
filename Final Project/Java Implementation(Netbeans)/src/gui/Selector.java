@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 package gui;
+
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
-import gui.LoginForm;
+import gui.EmployeeLoginForm;
 import gui.EmployeeRegistration;
 import gui.ManagerLogin;
 import gui.ManagerRegistration;
@@ -224,25 +225,25 @@ public class Selector extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ManagerLogin ml=new ManagerLogin();
+        ManagerLogin ml = new ManagerLogin();
         ml.setVisible(true);
         close();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ManagerRegistration m=new ManagerRegistration();
+        ManagerRegistration m = new ManagerRegistration();
         m.setVisible(true);
         close();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void loginbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbuttonActionPerformed
-        LoginForm l=new LoginForm();
+        EmployeeLoginForm l = new EmployeeLoginForm();
         l.setVisible(true);
         close();
     }//GEN-LAST:event_loginbuttonActionPerformed
 
     private void regbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regbuttonActionPerformed
-        EmployeeRegistration r=new EmployeeRegistration();
+        EmployeeRegistration r = new EmployeeRegistration();
         r.setVisible(true);
         close();
     }//GEN-LAST:event_regbuttonActionPerformed
@@ -297,8 +298,8 @@ public class Selector extends javax.swing.JFrame {
     private javax.swing.JButton loginbutton;
     private javax.swing.JButton regbutton;
     // End of variables declaration//GEN-END:variables
-public void close(){
-        WindowEvent winclosingEvent=new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+public void close() {
+        WindowEvent winclosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winclosingEvent);
     }
 }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
+
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -11,18 +12,20 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import mypackage.Readfile;
-import gui.LoginForm;
+import gui.EmployeeLoginForm;
+
 /**
  *
  * @author vinay
  */
 public class Manager extends javax.swing.JFrame {
+
     public String kr;
-     public String sk;
+    public String sk;
     //   private Scanner f;
-       public String bbc;
-       public String src[] = new String[4];
-       public String reqlist[] = new String[4];
+    public String bbc;
+    public String src[] = new String[4];
+    public String reqlist[] = new String[4];
 
     /**
      * Creates new form Employee
@@ -234,50 +237,50 @@ public class Manager extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.hide();
-        ManagerLogin frm= new ManagerLogin();
+        ManagerLogin frm = new ManagerLogin();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
- Readfile cx=new Readfile();    
-   int vc=cx.openfile("rlist");
-   if(vc==0){ cx.rfile();
-   ArrayList<String>reqlist = new ArrayList();
-       reqlist=cx.rgive();
-       cx.closefile();
-       
-       orequest oreq=new orequest();
-       oreq.printarray(reqlist);
-       oreq.display(src,kr);
-       oreq.setVisible(true);
-       close();
-   }
-     // c.yclosefile();
-   else{
-      JOptionPane.showMessageDialog(null,"No Request Submitted","Error",JOptionPane.ERROR_MESSAGE); 
-   }
+        Readfile cx = new Readfile();
+        int vc = cx.openfile("rlist");
+        if (vc == 0) {
+            cx.rfile();
+            ArrayList<String> reqlist = new ArrayList();
+            reqlist = cx.rgive();
+            cx.closefile();
+
+//       orequest oreq=new orequest();
+//       oreq.printarray(reqlist);
+//       oreq.display(src,kr);
+//       oreq.setVisible(true);
+//       close();
+        } // c.yclosefile();
+        else {
+            JOptionPane.showMessageDialog(null, "No Request Submitted", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-         Readfile cx=new Readfile();    
-   int vc=cx.openfile("rlist");
-   if(vc==0){ cx.rfile();
-   ArrayList<String>reqlist = new ArrayList();
-       reqlist=cx.rgive();
-       cx.closefile();
-       
-       lrequest lreq=new lrequest();
-       lreq.printarray(reqlist);
-       lreq.display(src,kr);
-       lreq.setVisible(true);
-       close();
-   }
-     // c.yclosefile();
-   else{
-      JOptionPane.showMessageDialog(null,"No Request Submitted","Error",JOptionPane.ERROR_MESSAGE); 
-   }
-   
+        Readfile cx = new Readfile();
+        int vc = cx.openfile("rlist");
+        if (vc == 0) {
+            cx.rfile();
+            ArrayList<String> reqlist = new ArrayList();
+            reqlist = cx.rgive();
+            cx.closefile();
+
+//       lrequest lreq=new lrequest();
+//       lreq.printarray(reqlist);
+//       lreq.display(src,kr);
+//       lreq.setVisible(true);
+//       close();
+        } // c.yclosefile();
+        else {
+            JOptionPane.showMessageDialog(null, "No Request Submitted", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -320,7 +323,7 @@ public class Manager extends javax.swing.JFrame {
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -346,8 +349,8 @@ public class Manager extends javax.swing.JFrame {
 //         src=lr;
 //        
 //    } 
-     private void close(){
-        WindowEvent winclosingEvent=new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+    private void close() {
+        WindowEvent winclosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winclosingEvent);
     }
 }

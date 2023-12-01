@@ -10,13 +10,11 @@ import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import mypackage.Createfile;
 
-
 /**
  *
  * @author vinay
  */
 public class ManagerRegistration extends javax.swing.JFrame {
-    
 
     /**
      * Creates new form registration
@@ -327,60 +325,64 @@ public class ManagerRegistration extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String rpass=regpass.getText();
-       String rid=regid.getText();
-       String rage=regage.getText();
-       String rfname=regfname.getText();
-       String rlname=reglname.getText();
-       Createfile g=new Createfile();
-        g.openfile("manager/"+rid);
-        g.addrecords(rfname,rlname,rage,rpass);
+        String rpass = regpass.getText();
+        String rid = regid.getText();
+        String rage = regage.getText();
+        String rfname = regfname.getText();
+        String rlname = reglname.getText();
+        Createfile g = new Createfile();
+        g.openfile("manager/" + rid);
+        g.addrecords(rfname, rlname, rage, rpass);
         g.closefile();
-        if(rfname.equals(null) || rfname.equals(""))
-        { JOptionPane.showMessageDialog(null,"enter the first name","Registration error",JOptionPane.ERROR_MESSAGE);}
-        else if(rlname.equals(null) || rlname.equals(""))
-        { JOptionPane.showMessageDialog(null,"enter the last name","Registration error",JOptionPane.ERROR_MESSAGE);}
-        else if(rid.equals(null) || rid.equals(""))
-        {JOptionPane.showMessageDialog(null,"enter the id","Registration error",JOptionPane.ERROR_MESSAGE);}
-        else if(rage.equals(null) || rage.equals(""))
-        { JOptionPane.showMessageDialog(null,"enter the age","Registration error",JOptionPane.ERROR_MESSAGE);}
-        else if(rpass.equals(null) || rpass.equals(""))
-        { JOptionPane.showMessageDialog(null,"enter the password","Registration error",JOptionPane.ERROR_MESSAGE);}
-            
-       if(rfname != null && !rfname.trim().isEmpty()){
-           if(rlname != null && !rlname.trim().isEmpty()){
-            if(rid != null && !rid.trim().isEmpty()){
-                if(rage != null && !rage.trim().isEmpty()){
-                    if(rpass != null && !rpass.trim().isEmpty()){
-                
-                JOptionPane.showMessageDialog(null,"Registartion Successful");
-              
-        ManagerLogin frm= new ManagerLogin();
-        frm.setVisible(true);
-        close();
-                /* regfname.setText(null);
+        if (rfname.equals(null) || rfname.equals("")) {
+            JOptionPane.showMessageDialog(null, "enter the first name", "Registration error", JOptionPane.ERROR_MESSAGE);
+        } else if (rlname.equals(null) || rlname.equals("")) {
+            JOptionPane.showMessageDialog(null, "enter the last name", "Registration error", JOptionPane.ERROR_MESSAGE);
+        } else if (rid.equals(null) || rid.equals("")) {
+            JOptionPane.showMessageDialog(null, "enter the id", "Registration error", JOptionPane.ERROR_MESSAGE);
+        } else if (rage.equals(null) || rage.equals("")) {
+            JOptionPane.showMessageDialog(null, "enter the age", "Registration error", JOptionPane.ERROR_MESSAGE);
+        } else if (rpass.equals(null) || rpass.equals("")) {
+            JOptionPane.showMessageDialog(null, "enter the password", "Registration error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        if (rfname != null && !rfname.trim().isEmpty()) {
+            if (rlname != null && !rlname.trim().isEmpty()) {
+                if (rid != null && !rid.trim().isEmpty()) {
+                    if (rage != null && !rage.trim().isEmpty()) {
+                        if (rpass != null && !rpass.trim().isEmpty()) {
+
+                            JOptionPane.showMessageDialog(null, "Registartion Successful");
+
+                            ManagerLogin frm = new ManagerLogin();
+                            frm.setVisible(true);
+                            close();
+                            /* regfname.setText(null);
                 reglname.setText(null);
                 regpass.setText(null);
                 regid.setText(null);
                 regage.setText(null);*/
-            }}}}
-}
-        
-      // setvalue(rname,rid,rage,rpass);
+                        }
+                    }
+                }
+            }
+        }
+
+        // setvalue(rname,rid,rage,rpass);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.hide();
-        Selector frm= new Selector();
+        Selector frm = new Selector();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       regfname.setText(null);
-       reglname.setText(null);
-       regpass.setText(null);
-       regid.setText(null);
-       regage.setText(null);
+        regfname.setText(null);
+        reglname.setText(null);
+        regpass.setText(null);
+        regid.setText(null);
+        regage.setText(null);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -388,10 +390,9 @@ public class ManagerRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-       if(jCheckBox1.isSelected()){
-            regpass.setEchoChar((char)0);
-        }
-        else{
+        if (jCheckBox1.isSelected()) {
+            regpass.setEchoChar((char) 0);
+        } else {
             regpass.setEchoChar('*');
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
@@ -400,8 +401,7 @@ public class ManagerRegistration extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_reglnameActionPerformed
 
-    
-  /*  public void setvalue(String rname,String rid,String rage,String rpass){
+    /*  public void setvalue(String rname,String rid,String rage,String rpass){
         setid=rid;
        setpass=rpass;
        setname=rname;
@@ -433,12 +433,12 @@ public class ManagerRegistration extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ManagerRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-     /*   Createfile g=new Createfile();
+        /*   Createfile g=new Createfile();
         g.openfile("setid");
         g.addrecords("setname","setage","setpass");
         g.closefile();*/
-       // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
-      /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
+        // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
+        /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
             regname.setText(null);
        regpass.setText(null);
        regid.setText(null);
@@ -447,8 +447,8 @@ public class ManagerRegistration extends javax.swing.JFrame {
         g.openfile("setid");
         g.addrecords("setname","setage","setpass");
         g.closefile();*/
-       // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
-      /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
+        // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
+        /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
             regname.setText(null);
        regpass.setText(null);
        regid.setText(null);
@@ -457,8 +457,8 @@ public class ManagerRegistration extends javax.swing.JFrame {
         g.openfile("setid");
         g.addrecords("setname","setage","setpass");
         g.closefile();*/
-       // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
-      /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
+        // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
+        /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
             regname.setText(null);
        regpass.setText(null);
        regid.setText(null);
@@ -467,15 +467,15 @@ public class ManagerRegistration extends javax.swing.JFrame {
         g.openfile("setid");
         g.addrecords("setname","setage","setpass");
         g.closefile();*/
-       // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
-      /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
+        // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
+        /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
             regname.setText(null);
        regpass.setText(null);
        regid.setText(null);
        regage.setText(null);*/
-       
 
-        /* Create and display the form */
+
+ /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ManagerRegistration().setVisible(true);
@@ -509,8 +509,8 @@ public class ManagerRegistration extends javax.swing.JFrame {
     private javax.swing.JTextField reglname;
     private javax.swing.JPasswordField regpass;
     // End of variables declaration//GEN-END:variables
-public void close(){
-        WindowEvent winclosingEvent=new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+public void close() {
+        WindowEvent winclosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winclosingEvent);
     }
 }

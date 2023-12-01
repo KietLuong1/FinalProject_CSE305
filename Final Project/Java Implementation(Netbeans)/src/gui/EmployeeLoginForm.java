@@ -9,16 +9,20 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import mypackage.Readfile;
-/**io
+
+/**
+ * io
+ *
  * @author vinay
  */
-public class LoginForm extends javax.swing.JFrame {
+public class EmployeeLoginForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form LoginForm
+     * Creates new form EmployeeLoginForm
      */
     public String lr[] = new String[4];
-    public LoginForm() {
+
+    public EmployeeLoginForm() {
         initComponents();
     }
 
@@ -238,15 +242,15 @@ public class LoginForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(812, 524));
+        setSize(new java.awt.Dimension(812, 502));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbexitActionPerformed
-      System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jbexitActionPerformed
 
     private void useridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useridActionPerformed
@@ -254,71 +258,65 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_useridActionPerformed
 
     private void jbresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbresetActionPerformed
-       userid.setText(null);
-       pass.setText(null);
+        userid.setText(null);
+        pass.setText(null);
     }//GEN-LAST:event_jbresetActionPerformed
 
     private void jbloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbloginActionPerformed
-       String password=pass.getText();
-       String id=userid.getText();
-       if(id.equals(null) || id.equals(""))
-        { JOptionPane.showMessageDialog(null,"enter the ID","Login Error",JOptionPane.ERROR_MESSAGE);}
-        else if(password.equals(null) || password.equals(""))
-        { JOptionPane.showMessageDialog(null,"enter the Password","Login Error",JOptionPane.ERROR_MESSAGE);}
-        else {Readfile r=new Readfile();
-        int v=r.openfile("employee/"+id);
-        if(v==1)
-        {
-        userid.setText(null);
-        pass.setText(null);
-        }
-        if(v==0){
-        r.readfile();
-         lr=r.give();
-        r.closefile();
-      //  JOptionPane.showMessageDialog(null,lr[3]);  
-      if(password.contains(lr[3]))
-       {
-           userid.setText(null);
-           pass.setText(null);
-           
-         // JOptionPane.showMessageDialog(null,"Login Successful");
-       //   SystemExit();
-            Employee emp=new Employee();
-            emp.display(lr,id);
-       emp.setVisible(true);
-      close();
-      /*  madefile p=new madefile();
+        String password = pass.getText();
+        String id = userid.getText();
+        if (id.equals(null) || id.equals("")) {
+            JOptionPane.showMessageDialog(null, "enter the ID", "Login Error", JOptionPane.ERROR_MESSAGE);
+        } else if (password.equals(null) || password.equals("")) {
+            JOptionPane.showMessageDialog(null, "enter the Password", "Login Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Readfile r = new Readfile();
+            int v = r.openfile("employee/" + id);
+            if (v == 1) {
+                userid.setText(null);
+                pass.setText(null);
+            }
+            if (v == 0) {
+                r.readfile();
+                lr = r.give();
+                r.closefile();
+                //  JOptionPane.showMessageDialog(null,lr[3]);  
+                if (password.contains(lr[3])) {
+                    userid.setText(null);
+                    pass.setText(null);
+
+                    // JOptionPane.showMessageDialog(null,"Login Successful");
+                    //   SystemExit();
+                    Employee emp = new Employee();
+                    emp.display(lr, id);
+                    emp.setVisible(true);
+                    close();
+                    /*  madefile p=new madefile();
         p.openfile("l");
         p.closefile();
         madefile x=new madefile();
         x.openfile("o");
        x.closefile();  */
-        
-        
-     
-       }
-       
-       else
-       {
-           JOptionPane.showMessageDialog(null,"wrong password","login error",JOptionPane.ERROR_MESSAGE);
-           pass.setText(null);
-       }
-        }  } 
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "wrong password", "login error", JOptionPane.ERROR_MESSAGE);
+                    pass.setText(null);
+                }
+            }
+        }
     }//GEN-LAST:event_jbloginActionPerformed
 
     private void jcbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbActionPerformed
-        if(jcb.isSelected()){
-            pass.setEchoChar((char)0);
-        }
-        else{
+        if (jcb.isSelected()) {
+            pass.setEchoChar((char) 0);
+        } else {
             pass.setEchoChar('*');
         }
     }//GEN-LAST:event_jcbActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       this.hide();
-        Selector frm= new Selector();
+        this.hide();
+        Selector frm = new Selector();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -339,21 +337,23 @@ public class LoginForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeLoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeLoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeLoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeLoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginForm().setVisible(true);
+                new EmployeeLoginForm().setVisible(true);
             }
         });
     }
@@ -377,8 +377,8 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JTextField userid;
     // End of variables declaration//GEN-END:variables
 
-    public void close(){
-        WindowEvent winclosingEvent=new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+    public void close() {
+        WindowEvent winclosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winclosingEvent);
     }
 }
