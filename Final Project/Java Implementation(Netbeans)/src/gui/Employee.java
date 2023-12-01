@@ -16,7 +16,7 @@ import mypackage.Createfile;
 import mypackage.Readfile;
 import mypackage.Requestlist;
 import mypackage.Requestlist2;
-import gui.LoginForm;
+import gui.EmployeeLoginForm;
 /**
  *
  * @author vinay
@@ -268,20 +268,12 @@ public class Employee extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.hide();
-        LoginForm frm= new LoginForm();
+        EmployeeLoginForm frm= new EmployeeLoginForm();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        status sab=new status();
-        try {
-            sab.displaydata(srd,kza);
-        } catch (IOException ex) {
-            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        sab.setVisible(true);
-        close();
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -327,10 +319,7 @@ public class Employee extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        remleaves rem=new remleaves();
-        rem.display(srd, kza);
-        rem.setVisible(true);
-        close();
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**

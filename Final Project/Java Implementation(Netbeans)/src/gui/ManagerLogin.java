@@ -9,15 +9,12 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import mypackage.Readfile;
-/**io
- * @author vinay
- */
+
+
 public class ManagerLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form loginform
-     */
     public String kr[] = new String[4];
+
     public ManagerLogin() {
         initComponents();
     }
@@ -229,7 +226,7 @@ public class ManagerLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbexitActionPerformed
-      System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_jbexitActionPerformed
 
     private void useridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useridActionPerformed
@@ -237,71 +234,65 @@ public class ManagerLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_useridActionPerformed
 
     private void jbresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbresetActionPerformed
-       userid.setText(null);
-       pass.setText(null);
+        userid.setText(null);
+        pass.setText(null);
     }//GEN-LAST:event_jbresetActionPerformed
 
     private void jbloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbloginActionPerformed
-       String password=pass.getText();
-       String id=userid.getText();
-       if(id.equals(null) || id.equals(""))
-        { JOptionPane.showMessageDialog(null,"enter the ID","Login Error",JOptionPane.ERROR_MESSAGE);}
-        else if(password.equals(null) || password.equals(""))
-        { JOptionPane.showMessageDialog(null,"enter the Password","Login Error",JOptionPane.ERROR_MESSAGE);}
-        else {Readfile r=new Readfile();
-        int v=r.openfile("manager/"+id);
-        if(v==1)
-        {
-        userid.setText(null);
-        pass.setText(null);
-        }
-        if(v==0){
-        r.readfile();
-         kr=r.give();
-        r.closefile();
-      //  JOptionPane.showMessageDialog(null,kr[3]);  
-      if(password.contains(kr[3]))
-       {
-           userid.setText(null);
-           pass.setText(null);
-           
-         // JOptionPane.showMessageDialog(null,"Login Successful");
-       //   SystemExit();
-            Manager mmp=new Manager();
-            mmp.display(kr,id);
-       mmp.setVisible(true);
-       close();
-      /*  madefile p=new madefile();
+        String password = pass.getText();
+        String id = userid.getText();
+        if (id.equals(null) || id.equals("")) {
+            JOptionPane.showMessageDialog(null, "enter the ID", "Login Error", JOptionPane.ERROR_MESSAGE);
+        } else if (password.equals(null) || password.equals("")) {
+            JOptionPane.showMessageDialog(null, "enter the Password", "Login Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Readfile r = new Readfile();
+            int v = r.openfile("manager/" + id);
+            if (v == 1) {
+                userid.setText(null);
+                pass.setText(null);
+            }
+            if (v == 0) {
+                r.readfile();
+                kr = r.give();
+                r.closefile();
+                //  JOptionPane.showMessageDialog(null,kr[3]);  
+                if (password.contains(kr[3])) {
+                    userid.setText(null);
+                    pass.setText(null);
+
+                    // JOptionPane.showMessageDialog(null,"Login Successful");
+                    //   SystemExit();
+                    Manager mmp = new Manager();
+                    mmp.display(kr, id);
+                    mmp.setVisible(true);
+                    close();
+                    /*  madefile p=new madefile();
         p.openfile("l");
         p.closefile();
         madefile x=new madefile();
         x.openfile("o");
        x.closefile();  */
-        
-        
-     
-       }
-       
-       else
-       {
-           JOptionPane.showMessageDialog(null,"wrong password","login error",JOptionPane.ERROR_MESSAGE);
-           pass.setText(null);
-       }
-        }  } 
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "wrong password", "login error", JOptionPane.ERROR_MESSAGE);
+                    pass.setText(null);
+                }
+            }
+        }
     }//GEN-LAST:event_jbloginActionPerformed
 
     private void jcbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbActionPerformed
-        if(jcb.isSelected()){
-            pass.setEchoChar((char)0);
-        }
-        else{
+        if (jcb.isSelected()) {
+            pass.setEchoChar((char) 0);
+        } else {
             pass.setEchoChar('*');
         }
     }//GEN-LAST:event_jcbActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       this.hide();
-        Selector frm= new Selector();
+        this.hide();
+        Selector frm = new Selector();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -360,8 +351,8 @@ public class ManagerLogin extends javax.swing.JFrame {
     private javax.swing.JTextField userid;
     // End of variables declaration//GEN-END:variables
 
-    private void close(){
-        WindowEvent winclosingEvent=new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+    private void close() {
+        WindowEvent winclosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winclosingEvent);
     }
 }
