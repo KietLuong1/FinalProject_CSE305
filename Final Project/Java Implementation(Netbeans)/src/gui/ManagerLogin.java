@@ -264,7 +264,7 @@ public class ManagerLogin extends javax.swing.JFrame {
                     // JOptionPane.showMessageDialog(null,"Login Successful");
                     //   SystemExit();
                     Manager mmp = new Manager();
-                    mmp.display(kr, id);
+//                    mmp.display(kr, id);
                     mmp.setVisible(true);
                     close();
                     /*  madefile p=new madefile();
