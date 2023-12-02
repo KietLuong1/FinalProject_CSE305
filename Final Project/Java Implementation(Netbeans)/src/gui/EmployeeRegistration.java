@@ -10,12 +10,12 @@ import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import mypackage.Createfile;
 
+
 /**
  *
  * @author vinay
  */
 public class EmployeeRegistration extends javax.swing.JFrame {
-
     public String setid;
     public String setpass;
     public String setname;
@@ -285,9 +285,10 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        if (jCheckBox1.isSelected()) {
-            regpass.setEchoChar((char) 0);
-        } else {
+        if(jCheckBox1.isSelected()){
+            regpass.setEchoChar((char)0);
+        }
+        else{
             regpass.setEchoChar('*');
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
@@ -307,39 +308,38 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.hide();
         //SystemExit();
-        Starting frm = new Starting();
+        Selector frm= new Selector();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String rpass = regpass.getText();
-        String rid = regid.getText();
-        String rage = regage.getText();
-        String rfname = regfname.getText();
-        String rlname = reglname.getText();
-        Createfile g = new Createfile();
-        g.openfile("employee/" + rid);
-        g.addrecords(rfname, rlname, rage, rpass);
+        String rpass=regpass.getText();
+        String rid=regid.getText();
+        String rage=regage.getText();
+        String rfname=regfname.getText();
+        String rlname=reglname.getText();
+        Createfile g=new Createfile();
+        g.openfile("employee/"+rid);
+        g.addrecords(rfname,rlname,rage,rpass);
         g.closefile();
-        if (rfname.equals(null) || rfname.equals("")) {
-            JOptionPane.showMessageDialog(null, "enter the first name", "Registration error", JOptionPane.ERROR_MESSAGE);
-        } else if (rlname.equals(null) || rlname.equals("")) {
-            JOptionPane.showMessageDialog(null, "enter the last name", "Registration error", JOptionPane.ERROR_MESSAGE);
-        } else if (rid.equals(null) || rid.equals("")) {
-            JOptionPane.showMessageDialog(null, "enter the id", "Registration error", JOptionPane.ERROR_MESSAGE);
-        } else if (rage.equals(null) || rage.equals("")) {
-            JOptionPane.showMessageDialog(null, "enter the age", "Registration error", JOptionPane.ERROR_MESSAGE);
-        } else if (rpass.equals(null) || rpass.equals("")) {
-            JOptionPane.showMessageDialog(null, "enter the password", "Registration error", JOptionPane.ERROR_MESSAGE);
-        }
+        if(rfname.equals(null) || rfname.equals(""))
+        { JOptionPane.showMessageDialog(null,"enter the first name","Registration error",JOptionPane.ERROR_MESSAGE);}
+        else if(rlname.equals(null) || rlname.equals(""))
+        { JOptionPane.showMessageDialog(null,"enter the last name","Registration error",JOptionPane.ERROR_MESSAGE);}
+        else if(rid.equals(null) || rid.equals(""))
+        {JOptionPane.showMessageDialog(null,"enter the id","Registration error",JOptionPane.ERROR_MESSAGE);}
+        else if(rage.equals(null) || rage.equals(""))
+        { JOptionPane.showMessageDialog(null,"enter the age","Registration error",JOptionPane.ERROR_MESSAGE);}
+        else if(rpass.equals(null) || rpass.equals(""))
+        { JOptionPane.showMessageDialog(null,"enter the password","Registration error",JOptionPane.ERROR_MESSAGE);}
 
-        if (rfname != null && !rfname.trim().isEmpty()) {
-            if (rlname != null && !rlname.trim().isEmpty()) {
-                if (rid != null && !rid.trim().isEmpty()) {
-                    if (rage != null && !rage.trim().isEmpty()) {
-                        if (rpass != null && !rpass.trim().isEmpty()) {
+        if(rfname != null && !rfname.trim().isEmpty()){
+            if(rlname != null && !rlname.trim().isEmpty()){
+                if(rid != null && !rid.trim().isEmpty()){
+                    if(rage != null && !rage.trim().isEmpty()){
+                        if(rpass != null && !rpass.trim().isEmpty()){
 
-                            JOptionPane.showMessageDialog(null, "Registartion Successful");
+                            JOptionPane.showMessageDialog(null,"Registartion Successful");
                             /*regfname.setText(null);
                             reglname.setText(null);
                             regpass.setText(null);
@@ -347,19 +347,17 @@ public class EmployeeRegistration extends javax.swing.JFrame {
                             regage.setText(null);*/
                             this.hide();
                             //SystemExit();
-//                            EmployeeLogin = new EmployeeLogin();
-//                            frm.setVisible(true);
+                            EmployeeLogin frm= new EmployeeLogin();
+                            frm.setVisible(true);
                             close();
-                        }
+                        }}}}
                     }
-                }
-            }
-        }
 
-        // setvalue(rname,rid,rage,rpass);
+                    // setvalue(rname,rid,rage,rpass);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /*  public void setvalue(String rname,String rid,String rage,String rpass){
+    
+  /*  public void setvalue(String rname,String rid,String rage,String rpass){
         setid=rid;
        setpass=rpass;
        setname=rname;
@@ -368,7 +366,58 @@ public class EmployeeRegistration extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(EmployeeRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(EmployeeRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(EmployeeRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(EmployeeRegistration.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+     /*   Createfile g=new Createfile();
+        g.openfile("setid");
+        g.addrecords("setname","setage","setpass");
+        g.closefile();*/
+       // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
+      /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
+            regname.setText(null);
+       regpass.setText(null);
+       regid.setText(null);
+        //</editor-fold>
+     /*   Createfile g=new Createfile();
+        g.openfile("setid");
+        g.addrecords("setname","setage","setpass");
+        g.closefile();*/
+       // JOptionPane.showMessageDialog(null,"invalid details","login error",JOptionPane.ERROR_MESSAGE);
+      /*JOptionPane.showInternalMessageDialog(frame,"Registartion Successful","information", JOptionPane.INFORMATION_MESSAGE);
+            regname.setText(null);
+       regpass.setText(null);
+       regid.setText(null);
+       regage.setText(null);*/
+       
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new EmployeeRegistration().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -398,8 +447,8 @@ public class EmployeeRegistration extends javax.swing.JFrame {
         WindowEvent winclosingEvent=new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winclosingEvent);
     }*/
-    public void close() {
-        WindowEvent winclosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+    public void close(){
+        WindowEvent winclosingEvent=new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winclosingEvent);
     }
 }
