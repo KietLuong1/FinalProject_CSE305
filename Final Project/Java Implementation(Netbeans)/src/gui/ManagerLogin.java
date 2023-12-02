@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import mypackage.Readfile;
 
 /**
- * io
+ * 
  *
  * @author vinay
  */
@@ -267,10 +267,10 @@ public class ManagerLogin extends javax.swing.JFrame {
 
                     // JOptionPane.showMessageDialog(null,"Login Successful");
                     //   SystemExit();
-                    Manager mmp = new Manager();
+//                    Manager mmp = new Manager();
 //            mmp.display(kr,id);
-                    mmp.setVisible(true);
-                    close();
+//                    mmp.setVisible(true);
+//                    close();
                     /*  madefile p=new madefile();
         p.openfile("l");
         p.closefile();
