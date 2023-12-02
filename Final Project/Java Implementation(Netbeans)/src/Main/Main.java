@@ -4,7 +4,7 @@
  */
 package Main;
 
-import data.Connection;
+import gui.Starting;
 
 /**
  *
@@ -12,10 +12,11 @@ import data.Connection;
  */
 public class Main {
     public static void main(String[] args) {
-//        Start starting = new Start();
-//        starting.setVisible(true);
+        Starting starting = new Starting();
+        starting.setVisible(true);
 
-        Connection connect = new Connection();
+//        Connection connect = new Connection();
+//        System.out.println(connect.getCon());
         
     }
 }
