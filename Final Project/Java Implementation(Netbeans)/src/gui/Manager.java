@@ -7,12 +7,9 @@ package gui;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 import javax.swing.JOptionPane;
 import mypackage.Readfile;
-import gui.EmployeeLoginForm;
 
 /**
  *
