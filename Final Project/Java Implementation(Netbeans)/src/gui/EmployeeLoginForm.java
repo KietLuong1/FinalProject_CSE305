@@ -263,6 +263,7 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jbresetActionPerformed
 
     private void jbloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbloginActionPerformed
+<<<<<<< Updated upstream
         String password = pass.getText();
         String id = userid.getText();
         if (id.equals(null) || id.equals("")) {
@@ -292,6 +293,36 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
                     emp.setVisible(true);
                     close();
                     /*  madefile p=new madefile();
+=======
+       String password=pass.getText();
+       String id=userid.getText();
+       if(id.equals(null) || id.equals(""))
+        { JOptionPane.showMessageDialog(null,"enter the ID","Login Error",JOptionPane.ERROR_MESSAGE);}
+        else if(password.equals(null) || password.equals(""))
+        { JOptionPane.showMessageDialog(null,"enter the Password","Login Error",JOptionPane.ERROR_MESSAGE);}
+        else {Readfile r=new Readfile();
+        int v=r.openfile("employee/"+id);
+        if(v==1)
+        {
+        userid.setText(null);
+        pass.setText(null);
+        }
+        if(v==0){
+        r.readfile();
+         lr=r.give();
+        r.closefile();
+      //  JOptionPane.showMessageDialog(null,lr[3]);  
+      if(password.contains(lr[3]))
+       {
+           userid.setText(null);
+           pass.setText(null);
+           
+         // JOptionPane.showMessageDialog(null,"Login Successful");
+       //   SystemExit();
+
+      close();
+      /*  madefile p=new madefile();
+>>>>>>> Stashed changes
         p.openfile("l");
         p.closefile();
         madefile x=new madefile();
