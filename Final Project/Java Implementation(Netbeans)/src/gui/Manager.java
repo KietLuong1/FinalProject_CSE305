@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import mypackage.Readfile;
-import gui.EmployeeLoginForm;
+import gui.EmployeeLogin;
 
 /**
  *
