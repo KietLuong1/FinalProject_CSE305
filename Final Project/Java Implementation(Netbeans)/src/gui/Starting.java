@@ -257,7 +257,7 @@ public class Starting extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void loginbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbuttonActionPerformed
-        EmployeeLoginForm l = new EmployeeLoginForm();
+        EmployeeLogin l = new EmployeeLogin();
         l.setVisible(true);
         close();
     }//GEN-LAST:event_loginbuttonActionPerformed

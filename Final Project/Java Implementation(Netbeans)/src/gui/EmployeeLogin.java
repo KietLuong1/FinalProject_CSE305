@@ -9,20 +9,16 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import mypackage.Readfile;
-
-/**
- * io
- *
+/**io
  * @author vinay
  */
-public class EmployeeLoginForm extends javax.swing.JFrame {
+public class EmployeeLogin extends javax.swing.JFrame {
 
     /**
-     * Creates new form EmployeeLoginForm
+     * Creates new form EmployeeLogin
      */
     public String lr[] = new String[4];
-
-    public EmployeeLoginForm() {
+    public EmployeeLogin() {
         initComponents();
     }
 
@@ -240,17 +236,15 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setSize(new java.awt.Dimension(812, 502));
+        setSize(new java.awt.Dimension(812, 496));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbexitActionPerformed
-        System.exit(0);
+      System.exit(0);
     }//GEN-LAST:event_jbexitActionPerformed
 
     private void useridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useridActionPerformed
@@ -258,42 +252,11 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_useridActionPerformed
 
     private void jbresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbresetActionPerformed
-        userid.setText(null);
-        pass.setText(null);
+       userid.setText(null);
+       pass.setText(null);
     }//GEN-LAST:event_jbresetActionPerformed
 
     private void jbloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbloginActionPerformed
-<<<<<<< Updated upstream
-        String password = pass.getText();
-        String id = userid.getText();
-        if (id.equals(null) || id.equals("")) {
-            JOptionPane.showMessageDialog(null, "enter the ID", "Login Error", JOptionPane.ERROR_MESSAGE);
-        } else if (password.equals(null) || password.equals("")) {
-            JOptionPane.showMessageDialog(null, "enter the Password", "Login Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            Readfile r = new Readfile();
-            int v = r.openfile("employee/" + id);
-            if (v == 1) {
-                userid.setText(null);
-                pass.setText(null);
-            }
-            if (v == 0) {
-                r.readfile();
-                lr = r.give();
-                r.closefile();
-                //  JOptionPane.showMessageDialog(null,lr[3]);  
-                if (password.contains(lr[3])) {
-                    userid.setText(null);
-                    pass.setText(null);
-
-                    // JOptionPane.showMessageDialog(null,"Login Successful");
-                    //   SystemExit();
-                    Employee emp = new Employee();
-                    emp.display(lr, id);
-                    emp.setVisible(true);
-                    close();
-                    /*  madefile p=new madefile();
-=======
        String password=pass.getText();
        String id=userid.getText();
        if(id.equals(null) || id.equals(""))
@@ -322,39 +285,104 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
 
       close();
       /*  madefile p=new madefile();
->>>>>>> Stashed changes
         p.openfile("l");
         p.closefile();
         madefile x=new madefile();
         x.openfile("o");
        x.closefile();  */
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "wrong password", "login error", JOptionPane.ERROR_MESSAGE);
-                    pass.setText(null);
-                }
-            }
-        }
+        
+        
+     
+       }
+       
+       else
+       {
+           JOptionPane.showMessageDialog(null,"wrong password","login error",JOptionPane.ERROR_MESSAGE);
+           pass.setText(null);
+       }
+        }  } 
     }//GEN-LAST:event_jbloginActionPerformed
 
     private void jcbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbActionPerformed
-        if (jcb.isSelected()) {
-            pass.setEchoChar((char) 0);
-        } else {
+        if(jcb.isSelected()){
+            pass.setEchoChar((char)0);
+        }
+        else{
             pass.setEchoChar('*');
         }
     }//GEN-LAST:event_jcbActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.hide();
-        Starting frm = new Starting();
+       this.hide();
+        Starting frm= new Starting();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(EmployeeLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(EmployeeLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(EmployeeLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(EmployeeLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new EmployeeLogin().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -375,8 +403,8 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
     private javax.swing.JTextField userid;
     // End of variables declaration//GEN-END:variables
 
-    public void close() {
-        WindowEvent winclosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+    public void close(){
+        WindowEvent winclosingEvent=new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winclosingEvent);
     }
 }

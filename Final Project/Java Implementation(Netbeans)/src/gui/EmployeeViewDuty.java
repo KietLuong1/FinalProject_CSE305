@@ -32,19 +32,11 @@ public class EmployeeViewDuty extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< Updated upstream
-            .addGap(0, 526, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 349, Short.MAX_VALUE)
-=======
             .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
->>>>>>> Stashed changes
         );
 
         pack();
@@ -76,10 +68,6 @@ public class EmployeeViewDuty extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(EmployeeViewDuty.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-<<<<<<< Updated upstream
-=======
-        //</editor-fold>
->>>>>>> Stashed changes
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -303,9 +303,6 @@ public class EmployeeAbility extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-<<<<<<< Updated upstream
-    
-=======
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -340,7 +337,6 @@ public class EmployeeAbility extends javax.swing.JFrame {
             }
         });
     }
->>>>>>> Stashed changes
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
