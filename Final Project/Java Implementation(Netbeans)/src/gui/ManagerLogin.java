@@ -263,10 +263,10 @@ public class ManagerLogin extends javax.swing.JFrame {
 
                     // JOptionPane.showMessageDialog(null,"Login Successful");
                     //   SystemExit();
-                    Manager mmp = new Manager();
+//                    Manager mmp = new Manager();
 //                    mmp.display(kr, id);
-                    mmp.setVisible(true);
-                    close();
+//                    mmp.setVisible(true);
+//                    close();
                     /*  madefile p=new madefile();
         p.openfile("l");
         p.closefile();
@@ -292,7 +292,7 @@ public class ManagerLogin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.hide();
-        Selector frm = new Selector();
+        FirstPage frm = new FirstPage();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
