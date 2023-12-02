@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gui;
+
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -16,17 +17,19 @@ import mypackage.Createfile;
 import mypackage.Readfile;
 import mypackage.Requestlist;
 import mypackage.Requestlist2;
-import gui.loginform;
+import gui.EmployeeLoginForm;
+
 /**
  *
  * @author vinay
  */
 public class Employee extends javax.swing.JFrame {
+
     public String kza;
-     public String sm;
+    public String sm;
     //   private Scanner f;
-       public String bb;
-       public String srd[] = new String[4];
+    public String bb;
+    public String srd[] = new String[4];
 
     /**
      * Creates new form Employee
@@ -268,69 +271,70 @@ public class Employee extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.hide();
-        loginform frm= new loginform();
+        EmployeeLoginForm frm = new EmployeeLoginForm();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        status sab=new status();
-        try {
-            sab.displaydata(srd,kza);
-        } catch (IOException ex) {
-            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        sab.setVisible(true);
-        close();
-        // TODO add your handling code here:
+//        status sab=new status();
+//        try {
+//            sab.displaydata(srd,kza);
+//        } catch (IOException ex) {
+//            Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        sab.setVisible(true);
+//        close();
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Createfile vs=new Createfile();
-        Readfile ss=new Readfile();
+        Createfile vs = new Createfile();
+        Readfile ss = new Readfile();
         //String rs;
-        bb="o";
+        bb = "o";
         bb = bb.concat(kza);
-        int x=ss.kfile(bb);
+        int x = ss.kfile(bb);
         //     ss.closefile();
-        if(x==0){
-            JOptionPane.showMessageDialog(null,"Already submitted request","Error",JOptionPane.ERROR_MESSAGE);
+        if (x == 0) {
+            JOptionPane.showMessageDialog(null, "Already submitted request", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        if(x==1){
+        if (x == 1) {
             vs.openfile(bb);
             //    vs.closefile();
             Requestlist2 a = new Requestlist2();
             a.appendToCheckbook(kza);
-            JOptionPane.showMessageDialog(null,"Overduty Request Submitted");  }
+            JOptionPane.showMessageDialog(null, "Overduty Request Submitted");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        Createfile p=new Createfile();
-        Readfile c=new Readfile();
+        Createfile p = new Createfile();
+        Readfile c = new Readfile();
         /* Createfile g=new Createfile();
         g.openfile("rlist");*/
         //  String q;
-        sm="l";
+        sm = "l";
         sm = sm.concat(kza);
-        int x=c.kfile(sm);
+        int x = c.kfile(sm);
         // c.yclosefile();
-        if(x==0){
-            JOptionPane.showMessageDialog(null,"Already submitted request","Error",JOptionPane.ERROR_MESSAGE);
+        if (x == 0) {
+            JOptionPane.showMessageDialog(null, "Already submitted request", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        if(x==1){
+        if (x == 1) {
             p.openfile(sm);
             // Requestlist cz=new Requestlist();
             Requestlist a = new Requestlist();
             a.appendToCheckbook(kza);
-            JOptionPane.showMessageDialog(null,"Leave Request Submitted");
+            JOptionPane.showMessageDialog(null, "Leave Request Submitted");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        remleaves rem=new remleaves();
-        rem.display(srd, kza);
-        rem.setVisible(true);
-        close();
+//        remleaves rem=new remleaves();
+//        rem.display(srd, kza);
+//        rem.setVisible(true);
+//        close();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
@@ -368,7 +372,7 @@ public class Employee extends javax.swing.JFrame {
         });
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -397,8 +401,8 @@ public class Employee extends javax.swing.JFrame {
 //         srd=lr;
 //        
 //    } 
-    public void close(){
-        WindowEvent winclosingEvent=new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+    public void close() {
+        WindowEvent winclosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winclosingEvent);
     }
 
