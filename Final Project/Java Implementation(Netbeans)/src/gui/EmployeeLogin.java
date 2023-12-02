@@ -12,13 +12,13 @@ import mypackage.Readfile;
 /**io
  * @author vinay
  */
-public class EmployeeLoginForm extends javax.swing.JFrame {
+public class EmployeeLogin extends javax.swing.JFrame {
 
     /**
-     * Creates new form EmployeeLoginForm
+     * Creates new form EmployeeLogin
      */
     public String lr[] = new String[4];
-    public EmployeeLoginForm() {
+    public EmployeeLogin() {
         initComponents();
     }
 
@@ -282,9 +282,7 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
            
          // JOptionPane.showMessageDialog(null,"Login Successful");
        //   SystemExit();
-            Employee emp=new Employee();
-            emp.display(lr,id);
-       emp.setVisible(true);
+
       close();
       /*  madefile p=new madefile();
         p.openfile("l");
@@ -337,14 +335,30 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EmployeeLoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EmployeeLoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EmployeeLoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EmployeeLoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeeLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -365,7 +379,7 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmployeeLoginForm().setVisible(true);
+                new EmployeeLogin().setVisible(true);
             }
         });
     }

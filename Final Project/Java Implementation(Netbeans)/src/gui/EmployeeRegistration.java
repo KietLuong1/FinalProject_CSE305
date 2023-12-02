@@ -347,7 +347,7 @@ public class EmployeeRegistration extends javax.swing.JFrame {
                             regage.setText(null);*/
                             this.hide();
                             //SystemExit();
-                            EmployeeLoginForm frm= new EmployeeLoginForm();
+                            EmployeeLogin frm= new EmployeeLogin();
                             frm.setVisible(true);
                             close();
                         }}}}
