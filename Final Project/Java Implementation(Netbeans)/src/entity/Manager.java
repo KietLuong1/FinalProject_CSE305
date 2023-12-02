@@ -9,5 +9,5 @@ package entity;
  * @author Huong Duyen
  */
 public class Manager {
-    
+    private String name;
 }
