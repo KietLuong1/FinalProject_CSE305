@@ -316,7 +316,7 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.hide();
-        Selector frm = new Selector();
+        Starting frm = new Starting();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
