@@ -50,8 +50,6 @@ public class EmployeeAbility extends javax.swing.JFrame {
         regid = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         regfname1 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        regfname2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -199,17 +197,12 @@ public class EmployeeAbility extends javax.swing.JFrame {
 
         regfname1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jLabel11.setText("Remaining Leaves");
-
-        regfname2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
@@ -225,13 +218,9 @@ public class EmployeeAbility extends javax.swing.JFrame {
                             .addComponent(reglname, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(regfname, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10))
-                        .addGap(87, 87, 87)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(regfname1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(regfname2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jLabel10)
+                        .addGap(109, 109, 109)
+                        .addComponent(regfname1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 52, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -259,11 +248,7 @@ public class EmployeeAbility extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(regfname1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(regfname2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -336,7 +321,6 @@ public class EmployeeAbility extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -353,7 +337,6 @@ public class EmployeeAbility extends javax.swing.JFrame {
     private javax.swing.JTextField regage;
     private javax.swing.JTextField regfname;
     private javax.swing.JTextField regfname1;
-    private javax.swing.JTextField regfname2;
     private javax.swing.JTextField regid;
     private javax.swing.JTextField reglname;
     // End of variables declaration//GEN-END:variables
