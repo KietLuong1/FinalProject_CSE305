@@ -7,10 +7,13 @@ package gui;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
-import gui.EmployeeLoginForm;
-import gui.EmployeeRegistration;
-import gui.ManagerLogin;
-import gui.ManagerRegistration;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,13 +21,30 @@ import gui.ManagerRegistration;
  */
 public class Starting extends javax.swing.JFrame {
 
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
     /**
      * Creates new form Selector
      */
     public Starting() {
         initComponents();
+        connect();
     }
 
+    public void connect(){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/campus_security_management", "root", "anhkiet2002");
+            System.out.println("Connected");
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
