@@ -41,8 +41,8 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        userid = new javax.swing.JTextField();
-        pass = new javax.swing.JPasswordField();
+        txtId = new javax.swing.JTextField();
+        txtpass = new javax.swing.JPasswordField();
         jblogin = new javax.swing.JButton();
         jbreset = new javax.swing.JButton();
         jbexit = new javax.swing.JButton();
@@ -77,9 +77,9 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(100, 169, 238));
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 433));
 
-        userid.addActionListener(new java.awt.event.ActionListener() {
+        txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                useridActionPerformed(evt);
+                txtIdActionPerformed(evt);
             }
         });
 
@@ -98,22 +98,12 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
         jbreset.setForeground(new java.awt.Color(255, 255, 255));
         jbreset.setText("Reset");
         jbreset.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jbreset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbresetActionPerformed(evt);
-            }
-        });
 
         jbexit.setBackground(new java.awt.Color(165, 116, 77));
         jbexit.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jbexit.setForeground(new java.awt.Color(255, 255, 255));
         jbexit.setText("Exit");
         jbexit.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jbexit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbexitActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -137,11 +127,6 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Back");
         jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Georgia", 1, 30)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -175,8 +160,8 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
                                     .addComponent(jLabel1))
                                 .addGap(28, 28, 28)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(pass, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(userid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtpass, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -191,9 +176,9 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(userid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
-                        .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jcb)
                 .addGap(31, 31, 31)
@@ -249,76 +234,25 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbexitActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jbexitActionPerformed
-
-    private void useridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useridActionPerformed
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_useridActionPerformed
-
-    private void jbresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbresetActionPerformed
-        userid.setText(null);
-        pass.setText(null);
-    }//GEN-LAST:event_jbresetActionPerformed
-
-    private void jbloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbloginActionPerformed
-        String password = pass.getText();
-        String id = userid.getText();
-        if (id.equals(null) || id.equals("")) {
-            JOptionPane.showMessageDialog(null, "enter the ID", "Login Error", JOptionPane.ERROR_MESSAGE);
-        } else if (password.equals(null) || password.equals("")) {
-            JOptionPane.showMessageDialog(null, "enter the Password", "Login Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            Readfile r = new Readfile();
-            int v = r.openfile("employee/" + id);
-            if (v == 1) {
-                userid.setText(null);
-                pass.setText(null);
-            }
-            if (v == 0) {
-                r.readfile();
-                lr = r.give();
-                r.closefile();
-                //  JOptionPane.showMessageDialog(null,lr[3]);  
-                if (password.contains(lr[3])) {
-                    userid.setText(null);
-                    pass.setText(null);
-
-                    // JOptionPane.showMessageDialog(null,"Login Successful");
-                    //   SystemExit();
-                    Employee emp = new Employee();
-                    emp.display(lr, id);
-                    emp.setVisible(true);
-                    close();
-                    /*  madefile p=new madefile();
-        p.openfile("l");
-        p.closefile();
-        madefile x=new madefile();
-        x.openfile("o");
-       x.closefile();  */
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "wrong password", "login error", JOptionPane.ERROR_MESSAGE);
-                    pass.setText(null);
-                }
-            }
-        }
-    }//GEN-LAST:event_jbloginActionPerformed
+    }//GEN-LAST:event_txtIdActionPerformed
 
     private void jcbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbActionPerformed
         if (jcb.isSelected()) {
-            pass.setEchoChar((char) 0);
+            txtpass.setEchoChar((char) 0);
         } else {
-            pass.setEchoChar('*');
+            txtpass.setEchoChar('*');
         }
     }//GEN-LAST:event_jcbActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.hide();
-        Starting frm = new Starting();
-        frm.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jbloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbloginActionPerformed
+        // TODO add your handling code here:
+        Employee emp = new Employee();
+        emp.setVisible(true);
+        emp.pack();
+        this.dispose();
+    }//GEN-LAST:event_jbloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,8 +274,8 @@ public class EmployeeLoginForm extends javax.swing.JFrame {
     private javax.swing.JButton jblogin;
     private javax.swing.JButton jbreset;
     private javax.swing.JCheckBox jcb;
-    private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField userid;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JPasswordField txtpass;
     // End of variables declaration//GEN-END:variables
 
     public void close() {
