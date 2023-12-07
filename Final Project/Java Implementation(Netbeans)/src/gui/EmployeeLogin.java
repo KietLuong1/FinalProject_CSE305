@@ -38,6 +38,7 @@ public class EmployeeLogin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 <<<<<<< HEAD
+<<<<<<< HEAD
         txtId = new javax.swing.JTextField();
         txtpass = new javax.swing.JPasswordField();
         jblogin = new javax.swing.JButton();
@@ -51,11 +52,16 @@ public class EmployeeLogin extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
         jlb = new javax.swing.JLabel();
 =======
+=======
+>>>>>>> parent of aa46541 (Trong's Update)
         userid = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
         jblogin = new javax.swing.JButton();
         jbreset = new javax.swing.JButton();
         jbexit = new javax.swing.JButton();
+<<<<<<< HEAD
+>>>>>>> parent of aa46541 (Trong's Update)
+=======
 >>>>>>> parent of aa46541 (Trong's Update)
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -89,6 +95,7 @@ public class EmployeeLogin extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 433));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
@@ -97,6 +104,9 @@ public class EmployeeLogin extends javax.swing.JFrame {
         btnLogin.setText("Login");
         btnLogin.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
+=======
+        userid.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> parent of aa46541 (Trong's Update)
 =======
         userid.addActionListener(new java.awt.event.ActionListener() {
 >>>>>>> parent of aa46541 (Trong's Update)
@@ -121,6 +131,7 @@ public class EmployeeLogin extends javax.swing.JFrame {
         jbreset.setText("Reset");
         jbreset.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         jbexit.setBackground(new java.awt.Color(165, 116, 77));
         jbexit.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -138,6 +149,22 @@ public class EmployeeLogin extends javax.swing.JFrame {
 >>>>>>> parent of aa46541 (Trong's Update)
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbresetActionPerformed(evt);
+=======
+        jbreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbresetActionPerformed(evt);
+            }
+        });
+
+        jbexit.setBackground(new java.awt.Color(165, 116, 77));
+        jbexit.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jbexit.setForeground(new java.awt.Color(255, 255, 255));
+        jbexit.setText("Exit");
+        jbexit.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jbexit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbexitActionPerformed(evt);
+>>>>>>> parent of aa46541 (Trong's Update)
             }
         });
 
@@ -160,6 +187,9 @@ public class EmployeeLogin extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Employee ID");
+<<<<<<< HEAD
+>>>>>>> parent of aa46541 (Trong's Update)
+=======
 >>>>>>> parent of aa46541 (Trong's Update)
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -181,6 +211,7 @@ public class EmployeeLogin extends javax.swing.JFrame {
         jButton1.setText("Back");
         jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         btnBack.setBackground(new java.awt.Color(165, 116, 77));
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -188,6 +219,9 @@ public class EmployeeLogin extends javax.swing.JFrame {
         btnBack.setText("Back");
         btnBack.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
+=======
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> parent of aa46541 (Trong's Update)
 =======
         jButton1.addActionListener(new java.awt.event.ActionListener() {
 >>>>>>> parent of aa46541 (Trong's Update)
@@ -229,10 +263,15 @@ public class EmployeeLogin extends javax.swing.JFrame {
                                 .addGap(28, 28, 28)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     .addComponent(txtpass, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                                     .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+=======
+                                    .addComponent(pass, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(userid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+>>>>>>> parent of aa46541 (Trong's Update)
 =======
                                     .addComponent(pass, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(userid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))))
@@ -252,6 +291,7 @@ public class EmployeeLogin extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
                         .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -261,6 +301,10 @@ public class EmployeeLogin extends javax.swing.JFrame {
                         .addComponent(userid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
 >>>>>>> parent of aa46541 (Trong's Update)
                         .addGap(37, 37, 37)
+=======
+                        .addComponent(userid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+>>>>>>> parent of aa46541 (Trong's Update)
                         .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jcb)
@@ -316,6 +360,7 @@ public class EmployeeLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
@@ -327,6 +372,11 @@ public class EmployeeLogin extends javax.swing.JFrame {
             txtpass.setEchoChar('*');
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+=======
+    private void jbexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbexitActionPerformed
+      System.exit(0);
+    }//GEN-LAST:event_jbexitActionPerformed
+>>>>>>> parent of aa46541 (Trong's Update)
 =======
     private void jbexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbexitActionPerformed
       System.exit(0);
@@ -399,6 +449,7 @@ public class EmployeeLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbActionPerformed
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private void jbloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbloginActionPerformed
         // TODO add your handling code here:
         Employee emp = new Employee();
@@ -421,11 +472,16 @@ public class EmployeeLogin extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 =======
+=======
+>>>>>>> parent of aa46541 (Trong's Update)
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        this.hide();
         FirstPage frm= new FirstPage();
         frm.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+<<<<<<< HEAD
+>>>>>>> parent of aa46541 (Trong's Update)
+=======
 >>>>>>> parent of aa46541 (Trong's Update)
 
     /**
@@ -496,12 +552,15 @@ public class EmployeeLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
 <<<<<<< HEAD
+<<<<<<< HEAD
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnReset;
     private javax.swing.JCheckBox cbxShowPassword;
 =======
+=======
+>>>>>>> parent of aa46541 (Trong's Update)
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
 >>>>>>> parent of aa46541 (Trong's Update)
@@ -514,8 +573,11 @@ public class EmployeeLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private javax.swing.JLabel jlb;
 
+=======
+>>>>>>> parent of aa46541 (Trong's Update)
 =======
 >>>>>>> parent of aa46541 (Trong's Update)
     private javax.swing.JButton jbexit;
@@ -523,11 +585,16 @@ public class EmployeeLogin extends javax.swing.JFrame {
     private javax.swing.JButton jbreset;
     private javax.swing.JCheckBox jcb;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private javax.swing.JTextField txtId;
     private javax.swing.JPasswordField txtpass;
 
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
+=======
+    private javax.swing.JPasswordField pass;
+    private javax.swing.JTextField userid;
+>>>>>>> parent of aa46541 (Trong's Update)
 =======
     private javax.swing.JPasswordField pass;
     private javax.swing.JTextField userid;

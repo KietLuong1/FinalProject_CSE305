@@ -160,6 +160,7 @@
                                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLoginForm.form
                                           <Component id="txtpass" alignment="1" max="32767" attributes="0"/>
                                           <Component id="txtId" alignment="1" min="-2" pref="248" max="-2" attributes="0"/>
@@ -167,6 +168,10 @@
                                           <Component id="txtPassword" alignment="1" max="32767" attributes="0"/>
                                           <Component id="txtUsername" alignment="1" min="-2" pref="248" max="-2" attributes="0"/>
 >>>>>>> main:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLogin.form
+=======
+                                          <Component id="pass" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="userid" alignment="1" min="-2" pref="248" max="-2" attributes="0"/>
+>>>>>>> parent of aa46541 (Trong's Update)
 =======
                                           <Component id="pass" alignment="1" max="32767" attributes="0"/>
                                           <Component id="userid" alignment="1" min="-2" pref="248" max="-2" attributes="0"/>
@@ -194,6 +199,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLoginForm.form
                               <Component id="txtId" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -203,6 +209,11 @@
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="txtPassword" min="-2" pref="30" max="-2" attributes="0"/>
 >>>>>>> main:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLogin.form
+=======
+                              <Component id="userid" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="pass" min="-2" pref="30" max="-2" attributes="0"/>
+>>>>>>> parent of aa46541 (Trong's Update)
 =======
                               <Component id="userid" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
@@ -227,6 +238,7 @@
           </Layout>
           <SubComponents>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLoginForm.form
             <Component class="javax.swing.JTextField" name="txtId">
               <Events>
@@ -248,6 +260,15 @@
             <Component class="javax.swing.JPasswordField" name="pass">
 >>>>>>> parent of aa46541 (Trong's Update)
             </Component>
+=======
+            <Component class="javax.swing.JTextField" name="userid">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="useridActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="pass">
+            </Component>
+>>>>>>> parent of aa46541 (Trong's Update)
             <Component class="javax.swing.JButton" name="jblogin">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
