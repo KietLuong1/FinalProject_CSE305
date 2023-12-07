@@ -44,12 +44,19 @@ public class EmployeeLogin extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        txtId = new javax.swing.JTextField();
+        txtpass = new javax.swing.JPasswordField();
+        jblogin = new javax.swing.JButton();
+        jbreset = new javax.swing.JButton();
+        jbexit = new javax.swing.JButton();
+
         txtUsername = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         jlb = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cbxShowPassword = new javax.swing.JCheckBox();
         btnBack = new javax.swing.JButton();
@@ -80,6 +87,9 @@ public class EmployeeLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(100, 169, 238));
         jPanel1.setPreferredSize(new java.awt.Dimension(850, 433));
 
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
         btnLogin.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(100, 169, 238));
         btnLogin.setText("Login");
@@ -101,6 +111,17 @@ public class EmployeeLogin extends javax.swing.JFrame {
             }
         });
 
+        jbreset.setBackground(new java.awt.Color(165, 116, 77));
+        jbreset.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jbreset.setForeground(new java.awt.Color(255, 255, 255));
+        jbreset.setText("Reset");
+        jbreset.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        jbexit.setBackground(new java.awt.Color(165, 116, 77));
+        jbexit.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jbexit.setForeground(new java.awt.Color(255, 255, 255));
+        jbexit.setText("Exit");
+        jbexit.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         btnExit.setBackground(new java.awt.Color(165, 116, 77));
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btnExit.setForeground(new java.awt.Color(255, 255, 255));
@@ -130,6 +151,12 @@ public class EmployeeLogin extends javax.swing.JFrame {
                 cbxShowPasswordActionPerformed(evt);
             }
         });
+
+        jButton1.setBackground(new java.awt.Color(165, 116, 77));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Back");
+        jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         btnBack.setBackground(new java.awt.Color(165, 116, 77));
         btnBack.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -174,6 +201,8 @@ public class EmployeeLogin extends javax.swing.JFrame {
                                     .addComponent(jlb))
                                 .addGap(28, 28, 28)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtpass, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                                     .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -190,6 +219,10 @@ public class EmployeeLogin extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+
                         .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
                         .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -248,6 +281,16 @@ public class EmployeeLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void jcbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbActionPerformed
+        if (jcb.isSelected()) {
+            txtpass.setEchoChar((char) 0);
+        } else {
+            txtpass.setEchoChar('*');
+
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
         String username = txtUsername.getText();
@@ -294,6 +337,13 @@ public class EmployeeLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbxShowPasswordActionPerformed
 
+    private void jbloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbloginActionPerformed
+        // TODO add your handling code here:
+        Employee emp = new Employee();
+        emp.setVisible(true);
+        emp.pack();
+        this.dispose();
+    }//GEN-LAST:event_jbloginActionPerformed
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
@@ -328,6 +378,14 @@ public class EmployeeLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jlb;
+
+    private javax.swing.JButton jbexit;
+    private javax.swing.JButton jblogin;
+    private javax.swing.JButton jbreset;
+    private javax.swing.JCheckBox jcb;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JPasswordField txtpass;
+
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables

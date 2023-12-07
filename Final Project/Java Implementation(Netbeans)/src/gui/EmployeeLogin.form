@@ -162,8 +162,13 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
+<<<<<<< HEAD:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLoginForm.form
+                                          <Component id="txtpass" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="txtId" alignment="1" min="-2" pref="248" max="-2" attributes="0"/>
+=======
                                           <Component id="txtPassword" alignment="1" max="32767" attributes="0"/>
                                           <Component id="txtUsername" alignment="1" min="-2" pref="248" max="-2" attributes="0"/>
+>>>>>>> main:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLogin.form
                                       </Group>
                                   </Group>
                               </Group>
@@ -186,9 +191,15 @@
                               <Component id="jLabel2" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLoginForm.form
+                              <Component id="txtId" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="txtpass" min="-2" pref="30" max="-2" attributes="0"/>
+=======
                               <Component id="txtUsername" min="-2" pref="30" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="txtPassword" min="-2" pref="30" max="-2" attributes="0"/>
+>>>>>>> main:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLogin.form
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -207,9 +218,18 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
+<<<<<<< HEAD:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLoginForm.form
+            <Component class="javax.swing.JTextField" name="txtId">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="txtpass">
+=======
             <Component class="javax.swing.JTextField" name="txtUsername">
             </Component>
             <Component class="javax.swing.JPasswordField" name="txtPassword">
+>>>>>>> main:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLogin.form
             </Component>
             <Component class="javax.swing.JButton" name="btnLogin">
               <Properties>
@@ -248,9 +268,12 @@
                   </Border>
                 </Property>
               </Properties>
+<<<<<<< HEAD:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLoginForm.form
+=======
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetActionPerformed"/>
               </Events>
+>>>>>>> main:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLogin.form
             </Component>
             <Component class="javax.swing.JButton" name="btnExit">
               <Properties>
@@ -270,9 +293,12 @@
                   </Border>
                 </Property>
               </Properties>
+<<<<<<< HEAD:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLoginForm.form
+=======
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
               </Events>
+>>>>>>> main:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLogin.form
             </Component>
             <Component class="javax.swing.JLabel" name="jlb">
               <Properties>
@@ -334,9 +360,12 @@
                   </Border>
                 </Property>
               </Properties>
+<<<<<<< HEAD:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLoginForm.form
+=======
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
               </Events>
+>>>>>>> main:Final Project/Java Implementation(Netbeans)/src/gui/EmployeeLogin.form
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
