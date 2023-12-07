@@ -10,10 +10,11 @@ package entity;
  */
 public class SecurityManager extends Staff {
 
-    public SecurityManager(String name, String identityNumber, String password) {
-        super(name, identityNumber, password);
+    public SecurityManager(String firstName, String lastName, String identityNumber, String password, String dob) {
+        super(firstName, lastName, identityNumber, password, dob);
     }
 
+    
     public class Manager {
 
     }

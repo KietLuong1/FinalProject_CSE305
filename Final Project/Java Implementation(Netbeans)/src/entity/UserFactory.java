@@ -10,7 +10,7 @@ package entity;
  */
 public interface UserFactory {
 
-    Staff creStaff(String name, String identity, String password);
+    Staff creStaff(String firstName, String lastName, String identity, String password, String dob);
 
     class SecurityFactory implements UserFactory {
 
@@ -20,24 +20,24 @@ public interface UserFactory {
             this.totalLeaveAllowed = totalLeaveAllowed;
         }
 
-        public Staff createUser(String name, String identityNumber, String password) {
-            return new SecurityStaff(name, identityNumber, password);
+        public Staff createUser(String firstName, String lastName, String identityNumber, String password, String dob) {
+            return new SecurityStaff(firstName, lastName, identityNumber, password, dob, password);
         }
 
         @Override
-        public Staff creStaff(String name, String identity, String password) {
+        public Staff creStaff(String firstName, String lastName, String identity, String password, String dob) {
             throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
     }
 
     class ManagerFactory implements UserFactory {
 
-        public Staff createUser(String name, String identityNumber, String password) {
-            return new SecurityManager(name, identityNumber, password);
+        public Staff createUser(String firstName, String lastName, String identityNumber, String password, String dob) {
+            return new SecurityManager(firstName, lastName, identityNumber, password, dob);
         }
 
         @Override
-        public Staff creStaff(String name, String identity, String password) {
+        public Staff creStaff(String firstName, String lastName, String identity, String password, String dob) {
             throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
     }

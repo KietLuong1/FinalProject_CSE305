@@ -20,7 +20,8 @@ public class SecurityManagementSystem {
     }
 
     public void registerUser(UserFactory factory, String name, String identityNumber, String password) {
-        Staff user = factory.creStaff(name, identityNumber, password);
+        
+        Staff user = factory.creStaff(name, name, identityNumber, password, name);
         users.add(user);
     }
 }

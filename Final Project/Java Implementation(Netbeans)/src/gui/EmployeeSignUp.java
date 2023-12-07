@@ -93,12 +93,12 @@ public class EmployeeSignUp extends javax.swing.JFrame {
         txtPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jLabel4.setText("Employee ID");
+        jLabel4.setText("Identity");
 
         txtEmployeeID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jLabel5.setText("Age");
+        jLabel5.setText("Date of birth");
 
         txtAge.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
