@@ -60,7 +60,7 @@ public class SecurityStaff extends Staff {
     public void register() {
         int id;
         try {
-            pst = con.prepareStatement("select * from user;");
+            pst = con.prepareStatement("select * from staff;");
             rs = pst.executeQuery();
 
             String s = "";
@@ -104,7 +104,7 @@ public class SecurityStaff extends Staff {
 
     public void login() {
         try {
-            pst = con.prepareStatement("select * from user where staff_id = '" + staff_id + "'and staff_password = '" + password + "'");
+            pst = con.prepareStatement("select * from staff where staff_id = '" + staff_id + "'and staff_password = '" + password + "'");
             rs = pst.executeQuery();
 
             if (rs.next()) {
@@ -123,28 +123,7 @@ public class SecurityStaff extends Staff {
 
     public void viewDuty() {
         try {
-            pst = con.prepareStatement("select * from duty_schedule;");
-            rs = pst.executeQuery();
-
-            String s = "";
-            int id;
-            id = 0;
-            String duty_id;
-
-            if (rs.next() == false) {
-                duty_id = "D1";
-            } else {
-                do {
-                    System.out.println(rs.getString(1));
-                    s = rs.getString(1);
-                } while (rs.next() == true);
-
-                String s1 = s.substring(0, 1);
-                String s2 = s.substring(1, s.length());
-
-                id = Integer.parseInt(s2) + 1;
-                duty_id = s1.concat(Integer.toString(id));
-            }
+            
             pst = con.prepareStatement("select place_id, duty_date, start_time, end_time from duty_schdule where user_id =?;");
             pst.setString(1, staff_id);
 
@@ -161,11 +140,39 @@ public class SecurityStaff extends Staff {
     }
 
     public void requestLeave() {
-        if (leaveTaken < totalLeaveAllowed) {
-            leaveTaken++;
-            JOptionPane.showMessageDialog(null, "Leave requested successfully!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Leave requested failed!");
+        int id;
+        try {
+            pst = con.prepareStatement("select * from leave_request;");
+            rs = pst.executeQuery();
+
+            String s = "";
+
+            if (rs.next() == false) {
+                id = 1;
+            } else {
+                do {
+                    s = rs.getString(1);
+                } while (rs.next() == true);
+
+                String s1 = s.substring(0, s.length());
+                id = Integer.parseInt(s1) + 1;
+            }
+            pst = con.prepareStatement("insert into leave_request user_id values (?)");
+            pst.setString(1, staff_id);
+
+            int k = pst.executeUpdate();
+
+            if (k == 1) {
+                if (leaveTaken < totalLeaveAllowed) {
+                    JOptionPane.showMessageDialog(null, "Successfully!");
+                    leaveTaken++;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+        } catch (Exception e) {
         }
     }
 }

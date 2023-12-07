@@ -33,7 +33,7 @@ public interface UserFactory {
     class ManagerFactory implements UserFactory {
 
         public Staff createUser(String firstName, String lastName, String identityNumber, String password, String dob) {
-            return new SecurityManager(firstName, lastName, identityNumber, password, dob);
+            return new SecurityManager(firstName, lastName, identityNumber, password, dob, dob);
         }
 
         @Override
