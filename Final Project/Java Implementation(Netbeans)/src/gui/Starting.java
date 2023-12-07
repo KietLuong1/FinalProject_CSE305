@@ -58,13 +58,13 @@ public class Starting extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        regbutton = new javax.swing.JButton();
-        loginbutton = new javax.swing.JButton();
+        btnEmpSignup = new javax.swing.JButton();
+        btnEmpLogin = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnManLogin = new javax.swing.JButton();
+        btnManSignup = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -87,23 +87,13 @@ public class Starting extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Employee Access");
 
-        regbutton.setBackground(new java.awt.Color(153, 153, 153));
-        regbutton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        regbutton.setText("SIGN UP");
-        regbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regbuttonActionPerformed(evt);
-            }
-        });
+        btnEmpSignup.setBackground(new java.awt.Color(153, 153, 153));
+        btnEmpSignup.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnEmpSignup.setText("SIGN UP");
 
-        loginbutton.setBackground(new java.awt.Color(238, 228, 189));
-        loginbutton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        loginbutton.setText("SIGN IN");
-        loginbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginbuttonActionPerformed(evt);
-            }
-        });
+        btnEmpLogin.setBackground(new java.awt.Color(238, 228, 189));
+        btnEmpLogin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnEmpLogin.setText("SIGN IN");
 
         jLabel4.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -120,9 +110,9 @@ public class Starting extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(regbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEmpSignup, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(loginbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEmpLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(93, 93, 93))
         );
         jPanel2Layout.setVerticalGroup(
@@ -131,11 +121,11 @@ public class Starting extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel3)
                 .addGap(54, 54, 54)
-                .addComponent(loginbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEmpLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(regbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEmpSignup, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83))
         );
 
@@ -143,24 +133,14 @@ public class Starting extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Manager Access");
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("SIGN IN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        btnManLogin.setBackground(new java.awt.Color(0, 0, 0));
+        btnManLogin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnManLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnManLogin.setText("SIGN IN");
 
-        jButton2.setBackground(new java.awt.Color(114, 126, 165));
-        jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton2.setText("SIGN UP");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        btnManSignup.setBackground(new java.awt.Color(114, 126, 165));
+        btnManSignup.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btnManSignup.setText("SIGN UP");
 
         jLabel6.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
         jLabel6.setText("You don't have an Account? Create one.");
@@ -176,9 +156,9 @@ public class Starting extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnManSignup, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnManLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(84, 84, 84))
         );
         jPanel3Layout.setVerticalGroup(
@@ -187,11 +167,11 @@ public class Starting extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jLabel5)
                 .addGap(53, 53, 53)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManSignup, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -244,37 +224,15 @@ public class Starting extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ManagerLogin ml = new ManagerLogin();
-        ml.setVisible(true);
-        close();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ManagerRegistration m = new ManagerRegistration();
-        m.setVisible(true);
-        close();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void loginbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbuttonActionPerformed
-        EmployeeLoginForm l = new EmployeeLoginForm();
-        l.setVisible(true);
-        close();
-    }//GEN-LAST:event_loginbuttonActionPerformed
-
-    private void regbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regbuttonActionPerformed
-        EmployeeRegistration r = new EmployeeRegistration();
-        r.setVisible(true);
-        close();
-    }//GEN-LAST:event_regbuttonActionPerformed
-
     /**
      * @param args the command line arguments
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnEmpLogin;
+    private javax.swing.JButton btnEmpSignup;
+    private javax.swing.JButton btnManLogin;
+    private javax.swing.JButton btnManSignup;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -284,8 +242,6 @@ public class Starting extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton loginbutton;
-    private javax.swing.JButton regbutton;
     // End of variables declaration//GEN-END:variables
 public void close() {
         WindowEvent winclosingEvent = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
