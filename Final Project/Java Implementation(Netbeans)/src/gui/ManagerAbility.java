@@ -1,5 +1,6 @@
 package gui;
 
+import connection.SecurityConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,11 +15,9 @@ import javax.swing.table.DefaultTableModel;
 
 public class ManagerAbility extends javax.swing.JFrame {
 
-    private boolean isDone;
-
     public ManagerAbility() {
         initComponents();
-        Connect();
+        con = new SecurityConnection().Connect();
         fetch("select * from request;");
         loadStaff();
     }
@@ -26,19 +25,7 @@ public class ManagerAbility extends javax.swing.JFrame {
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
-
-    public void Connect() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "19102003");
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
+    
     public void fetch(String query) {
         try {
             pst = con.prepareStatement(query);
@@ -417,7 +404,7 @@ public class ManagerAbility extends javax.swing.JFrame {
                     new EmployeeAbility(staff_id).checkRequest();
                     fetch("select * from request;");
                 } else {
-                    JOptionPane.showMessageDialog(this, "Fail!!");
+                    JOptionPane.showMessageDialog(this, "No request now!!");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ManagerAbility.class.getName()).log(Level.SEVERE, null, ex);
@@ -437,7 +424,7 @@ public class ManagerAbility extends javax.swing.JFrame {
                     new EmployeeAbility(staff_id).checkRequest();
                     fetch("select * from request;");
                 } else {
-                    JOptionPane.showMessageDialog(this, "Fail!!");
+                    JOptionPane.showMessageDialog(this, "No request now!!");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ManagerAbility.class.getName()).log(Level.SEVERE, null, ex);

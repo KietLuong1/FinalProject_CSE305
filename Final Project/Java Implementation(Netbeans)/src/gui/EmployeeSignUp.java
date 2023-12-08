@@ -1,40 +1,26 @@
 package gui;
 
-import entity.SecurityStaff;
+import connection.SecurityConnection;
+import date_chooser.Chooser;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class EmployeeSignUp extends javax.swing.JFrame {
-
-    public String setid;
-    public String setpass;
-    public String setname;
-    public String setage;
+    private Chooser date;
+    
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
 
     public EmployeeSignUp() {
         initComponents();
-        Connect();
-    }
-
-    public void Connect() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "19102003");
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        con = new SecurityConnection().Connect();
+        date = new Chooser();
+        date.defaultFormat(txtDob);
     }
 
     @SuppressWarnings("unchecked")
@@ -317,7 +303,7 @@ public class EmployeeSignUp extends javax.swing.JFrame {
             pst.setString(1, lastName.concat(" ").concat(firstName));
             pst.setString(2, username);
             pst.setString(3, password);
-            pst.setString(4, dob);
+            pst.setString(4, date.formatDateToSQL(dob));
             pst.setString(5, id);
             pst.setString(6, "0");
 
@@ -337,7 +323,7 @@ public class EmployeeSignUp extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Sign up fail");
             }
         } catch (Exception e) {
-            Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(EmployeeSignUp.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 

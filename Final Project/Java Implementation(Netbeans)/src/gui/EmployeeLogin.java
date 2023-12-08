@@ -1,5 +1,6 @@
 package gui;
 
+import connection.SecurityConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,24 +14,14 @@ public class EmployeeLogin extends javax.swing.JFrame {
 
     public EmployeeLogin() {
         initComponents();
-        Connect();
+       con = new SecurityConnection().Connect();
     }
 
-    Connection connect;
+    Connection con;
     PreparedStatement pst;
     ResultSet rs;
 
-    public void Connect() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "19102003");
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -259,7 +250,7 @@ public class EmployeeLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Username or Password can not be empty!");
         } else {
             try {
-                pst = connect.prepareStatement("SELECT * FROM staff WHERE username = ? and password =?");
+                pst = con.prepareStatement("SELECT * FROM staff WHERE username = ? and password =?");
                 pst.setString(1, username);
                 pst.setString(2, password);
                 rs = pst.executeQuery();

@@ -5,14 +5,10 @@
  */
 package gui;
 
-import entity.SecurityStaff;
+import connection.SecurityConnection;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,20 +21,10 @@ public class ManagerLogin extends javax.swing.JFrame {
 
     public ManagerLogin() {
         initComponents();
-        connect();
+        con = new SecurityConnection().Connect();
     }
 
-    public void connect() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "19102003");
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -271,7 +257,7 @@ public class ManagerLogin extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Fail");
                 }
             } catch (Exception e) {
-                Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(ManagerLogin.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }//GEN-LAST:event_btnSignInActionPerformed

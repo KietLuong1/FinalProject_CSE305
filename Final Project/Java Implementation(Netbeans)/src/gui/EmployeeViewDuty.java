@@ -1,11 +1,13 @@
 package gui;
 
+import connection.SecurityConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +19,7 @@ public class EmployeeViewDuty extends javax.swing.JFrame {
     public EmployeeViewDuty(String staff_id) {
         initComponents();
         this.staff_id = staff_id;
-        Connect();
+        con = new SecurityConnection().Connect();
         fetch();
     }
 
@@ -25,21 +27,13 @@ public class EmployeeViewDuty extends javax.swing.JFrame {
     PreparedStatement pst;
     ResultSet rs;
 
-    public void Connect() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "19102003");
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
 
     public void fetch() {
         try {
-            pst = con.prepareStatement("select * from duty_schedule");
+            pst = con.prepareStatement("select * from duty_schedule where duty_date between ? and ? order by duty_date");
+            pst.setString(1, LocalDate.now().toString());
+            pst.setString(2, LocalDate.now().plusDays(7).toString());
             rs = pst.executeQuery();
             ResultSetMetaData ress = rs.getMetaData();
             int colCount = ress.getColumnCount();

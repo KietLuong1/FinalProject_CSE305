@@ -4,6 +4,7 @@
  */
 package main;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import gui.FirstPage;
 
 /**
@@ -12,6 +13,8 @@ import gui.FirstPage;
  */
 public class MyMain {
     public static void main(String[] args) {
+        FlatIntelliJLaf.registerCustomDefaultsSource("style");
+        FlatIntelliJLaf.setup();
         new FirstPage().setVisible(true);
     }
 }

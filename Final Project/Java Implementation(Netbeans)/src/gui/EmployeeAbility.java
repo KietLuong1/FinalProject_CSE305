@@ -1,10 +1,9 @@
 package gui;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.raven.datechooser.DateChooser;
+import connection.SecurityConnection;
+import date_chooser.Chooser;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -12,36 +11,26 @@ import javax.swing.JOptionPane;
 public class EmployeeAbility extends javax.swing.JFrame {
 
     private String staff_id;
+    private Chooser date;
 
     public EmployeeAbility(String id) {
         initComponents();
         this.staff_id = id;
-        Connect();
-        checkRequest();  
+        con = new SecurityConnection().Connect();
+        date = new Chooser();
+        checkRequest();
     }
 
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
 
-    public void Connect() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "19102003");
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     public void loadStaff() {
         try {
             pst = con.prepareStatement("select * from staff where staff_id = ?");
             pst.setString(1, staff_id);
             rs = pst.executeQuery();
-            
+
             if (rs.next()) {
                 txtEmployeeID.setText(staff_id);
                 String[] fullName = rs.getString(2).split(" ");
@@ -50,29 +39,30 @@ public class EmployeeAbility extends javax.swing.JFrame {
                 txtDob.setText(rs.getString(6));
                 txtIdentity.setText(rs.getString(7));
                 txtSalary.setText(rs.getString(8));
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Cannot get data");
             }
 
-            pst = con.prepareStatement("select status from request where staff_id = ?;"); 
+            pst = con.prepareStatement("select status from request where staff_id = ?;");
             pst.setString(1, staff_id);
             rs = pst.executeQuery();
 
             while (rs.next()) {
                 txtStatus.setText(rs.getString(1));
             }
-
+            date.defaultFormat(txtDob);
         } catch (SQLException ex) {
             Logger.getLogger(ManagerViewRoutine.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void checkRequest(){
+
+    public void checkRequest() {
         loadStaff();
-        if(txtStatus.getText().equals("waiting")){
+        
+        if (txtStatus.getText().equals("waiting")) {
             btnLeave.setEnabled(false);
             btnOverduty.setEnabled(false);
-        }else{
+        } else {
             btnLeave.setEnabled(true);
             btnOverduty.setEnabled(true);
         }
@@ -280,7 +270,7 @@ public class EmployeeAbility extends javax.swing.JFrame {
         btnEdit.setBackground(new java.awt.Color(165, 116, 77));
         btnEdit.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btnEdit.setForeground(new java.awt.Color(255, 255, 255));
-        btnEdit.setText("Edit");
+        btnEdit.setText("Update");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
@@ -413,11 +403,11 @@ public class EmployeeAbility extends javax.swing.JFrame {
     private void btnOverdutyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOverdutyActionPerformed
         try {
             pst = con.prepareStatement("insert into request (staff_id,request_type, status) values (?,?,?);");
-            
+
             pst.setString(1, staff_id);
             pst.setString(2, "overduty");
             pst.setString(3, "waiting");
-            
+
             int k = pst.executeUpdate();
 
             if (k == 1) {
@@ -443,22 +433,22 @@ public class EmployeeAbility extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         try {
-            String fullName = txtFirstName.getText()+ " "+ txtLastName.getText();
+            String fullName = txtFirstName.getText() + " " + txtLastName.getText();
             String dob = txtDob.getText();
             String identity = txtIdentity.getText();
-            
+
             pst = con.prepareStatement("update staff set staff_name = ?, dob =?, identity =? where staff_id =?");
             pst.setString(1, fullName);
-            pst.setString(2, dob);
+            pst.setString(2, date.formatDateToSQL(dob));
             pst.setString(3, identity);
             pst.setString(4, staff_id);
-            
+
             int k = pst.executeUpdate();
-            
-            if(k == 1){
+
+            if (k == 1) {
                 JOptionPane.showMessageDialog(this, "Update successful");
                 loadStaff();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Update fail");
             }
         } catch (SQLException ex) {
