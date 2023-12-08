@@ -16,20 +16,19 @@ public class EmployeeSignUp extends javax.swing.JFrame {
     public String setpass;
     public String setname;
     public String setage;
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
 
     public EmployeeSignUp() {
         initComponents();
         Connect();
     }
-
-    Connection con;
-    PreparedStatement pst;
-    ResultSet rs;
-
+  
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "anhkiet2002");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -309,7 +308,7 @@ public class EmployeeSignUp extends javax.swing.JFrame {
         String lastName = txtLastName.getText();
         String id = txtIdentity.getText();
         String username = txtUsername.getText();
-        String password = txtPassword.getPassword().toString();
+        String password = txtPassword.getText();
         String dob = txtDob.getText();
 
         try {
@@ -325,6 +324,14 @@ public class EmployeeSignUp extends javax.swing.JFrame {
 
             if (k == 1) {
                 JOptionPane.showMessageDialog(this, "Sign up successful");
+                txtFirstName.setText("");
+                txtLastName.setText("");
+                txtDob.setText("");
+                txtIdentity.setText("");
+                txtPassword.setText("");
+                txtUsername.setText("");
+                new FirstPage().setVisible(true);
+                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Sign up fail");
             }

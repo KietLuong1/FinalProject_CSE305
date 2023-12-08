@@ -31,7 +31,7 @@ public class ManagerLogin extends javax.swing.JFrame {
     public void connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/database", "root", "Hd301202");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "anhkiet2002");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, ex);
@@ -229,21 +229,25 @@ public class ManagerLogin extends javax.swing.JFrame {
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
         String username = txtUsername.getText();
-        String password = txtPassword.getPassword().toString();
-        
-        try {
-            pst = con.prepareStatement("select * from manager where username = '" + username + "'and password = '" + password + "'");
-            rs = pst.executeQuery();
+        String password = txtPassword.getText();
 
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(this, "Login successful");
-                new ManagerAbility().setVisible(true);
-            }else{
-                JOptionPane.showMessageDialog(this, "Fail");
+        if (username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Username or Password can not be empty!");
+        } else {
+            try {
+                pst = con.prepareStatement("select * from manager where username = '" + username + "'and password = '" + password + "'");
+                rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    JOptionPane.showMessageDialog(this, "Login successful");
+                    new ManagerAbility().setVisible(true);
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Fail");
+                }
+            } catch (Exception e) {
+                Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, e);
             }
-        } catch (Exception e) {
-            Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, e);
-
         }
     }//GEN-LAST:event_btnSignInActionPerformed
 

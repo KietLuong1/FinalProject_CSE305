@@ -18,12 +18,12 @@ public class EmployeeLogin extends javax.swing.JFrame {
 
     Connection connect;
     PreparedStatement pst;
-    ResultSet result;
+    ResultSet rs;
 
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "", "");
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "anhkiet2002");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -249,7 +249,7 @@ public class EmployeeLogin extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
         String username = txtUsername.getText();
-        String password = txtPassword.getPassword().toString();
+        String password = txtPassword.getText();
 
         if (username.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Username or Password can not be empty!");
@@ -258,11 +258,11 @@ public class EmployeeLogin extends javax.swing.JFrame {
                 pst = connect.prepareStatement("SELECT * FROM staff WHERE username = ? and password =?");
                 pst.setString(1, username);
                 pst.setString(2, password);
-                result = pst.executeQuery();
+                rs = pst.executeQuery();
 
-                if (result.next()) {
+                if (rs.next()) {
                     JOptionPane.showMessageDialog(this, "Login successful");
-                    new EmployeeAbility(username).setVisible(true);
+                    new EmployeeAbility(rs.getString(1)).setVisible(true);
                     dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Your Username or Your Password is Incorrect!");

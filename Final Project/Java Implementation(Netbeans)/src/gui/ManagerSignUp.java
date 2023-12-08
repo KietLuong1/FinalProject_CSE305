@@ -38,7 +38,7 @@ public class ManagerSignUp extends javax.swing.JFrame {
     public void connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/database", "root", "Hd301202");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "anhkiet2002");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, ex);
@@ -351,7 +351,7 @@ public class ManagerSignUp extends javax.swing.JFrame {
         String lastName = txtLastName.getText();
         String id = txtIdentity.getText();
         String username = txtUsername.getText();
-        String password = txtPassword.getPassword().toString();
+        String password = txtPassword.getText();
         String dob = txtDob.getText();
 
         try {

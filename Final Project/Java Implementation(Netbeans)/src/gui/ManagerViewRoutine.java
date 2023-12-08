@@ -2,7 +2,6 @@ package gui;
 
 import entity.SecurityStaff;
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +29,7 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "anhkiet2002");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -43,6 +42,7 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
         try {
             pst = con.prepareStatement("select staff_id from duty_schedule;");
             rs = pst.executeQuery();
+            cmbxEmpID.removeAllItems();
 
             while (rs.next()) {
                 cmbxEmpID.addItem(rs.getString(1));
@@ -159,7 +159,6 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
         });
 
         cmbxEmpID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cmbxEmpID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnViewRoutine.setBackground(new java.awt.Color(100, 169, 238));
         btnViewRoutine.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -185,7 +184,7 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
                     .addComponent(cmbxEmpID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCreateRoutine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnViewRoutine, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -247,7 +246,7 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
         txtDate.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jLabel10.setText("Place");
+        jLabel10.setText("Place ID");
 
         txtPlace.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -353,7 +352,7 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
             pst = con.prepareStatement("select * from duty_schedule;");
             rs = pst.executeQuery();
 
-            pst = con.prepareStatement("insert into duty_schedule (user_id, place_id, duty_date, start_time, end_time) values (?,?,?,?,?);");
+            pst = con.prepareStatement("insert into duty_schedule (staff_id, place_id, duty_date, start_time, end_time) values (?,?,?,?,?);");
             pst.setString(1, cmbxEmpID.getSelectedItem().toString());
             pst.setString(2, txtPlace.getText());
             pst.setString(3, txtDate.getText());
@@ -364,6 +363,7 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
 
             if (k == 1) {
                 JOptionPane.showMessageDialog(this, "Successful");
+                fetch("select * from duty_schedule;");
             } else {
                 JOptionPane.showMessageDialog(this, "Unsuccessful");
             }

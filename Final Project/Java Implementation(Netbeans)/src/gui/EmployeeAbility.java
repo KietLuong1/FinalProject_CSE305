@@ -7,19 +7,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class EmployeeAbility extends javax.swing.JFrame {
-    private String user_name;
-    
-    public EmployeeAbility(String user_name) {
+
+    private String staff_id;
+
+    public EmployeeAbility(String id) {
         initComponents();
+        this.staff_id = id;
         Connect();
-        this.user_name = user_name;
-    }
-    
-    public EmployeeAbility() {
-        initComponents();
-        Connect();
+        checkRequest();  
     }
 
     Connection con;
@@ -29,7 +27,7 @@ public class EmployeeAbility extends javax.swing.JFrame {
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "anhkiet2002");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -40,36 +38,46 @@ public class EmployeeAbility extends javax.swing.JFrame {
 
     public void loadStaff() {
         try {
-            pst = con.prepareStatement("select * from staff where username = ?;");
-            pst.setString(1, user_name);
+            pst = con.prepareStatement("select * from staff where staff_id = ?");
+            pst.setString(1, staff_id);
             rs = pst.executeQuery();
-
-            if(rs.next()){
-                txtEmployeeID.setText(rs.getString(1));
+            
+            if (rs.next()) {
+                txtEmployeeID.setText(staff_id);
                 String[] fullName = rs.getString(2).split(" ");
-                txtFirstName.setText( fullName[0]);
+                txtFirstName.setText(fullName[0]);
                 txtLastName.setText(fullName[1]);
                 txtDob.setText(rs.getString(6));
                 txtIdentity.setText(rs.getString(7));
-                txtSalary.setText(rs.getString(8));             
+                txtSalary.setText(rs.getString(8));
+            }else{
+                JOptionPane.showMessageDialog(this, "Cannot get data");
             }
-            
-            pst = con.prepareStatement("select is_approved from leave_request where staff_id = ?;");
-            pst.setString(1, rs.getString(1));
+
+            pst = con.prepareStatement("select status from request where staff_id = ?;"); 
+            pst.setString(1, staff_id);
             rs = pst.executeQuery();
-            
-            while(rs.next()){
-                if(rs.getString(1).equals("1")){
-                    txtStatus.setText("Approved");
-                }else{
-                    txtStatus.setText("Denied");
-                }
+
+            while (rs.next()) {
+                txtStatus.setText(rs.getString(1));
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ManagerViewRoutine.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void checkRequest(){
+        loadStaff();
+        if(txtStatus.getText().equals("waiting")){
+            btnLeave.setEnabled(false);
+            btnOverduty.setEnabled(false);
+        }else{
+            btnLeave.setEnabled(true);
+            btnOverduty.setEnabled(true);
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -260,11 +268,13 @@ public class EmployeeAbility extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel10.setText("Salary");
 
+        txtSalary.setEditable(false);
         txtSalary.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jLabel11.setText("Request Status");
+        jLabel11.setText("Recently Request Status");
 
+        txtStatus.setEditable(false);
         txtStatus.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         btnEdit.setBackground(new java.awt.Color(153, 153, 153));
@@ -291,6 +301,7 @@ public class EmployeeAbility extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
@@ -298,20 +309,18 @@ public class EmployeeAbility extends javax.swing.JFrame {
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel12)
-                                    .addComponent(jLabel10))
-                                .addGap(127, 127, 127)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11))
+                                .addGap(38, 38, 38)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtIdentity, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(109, 109, 109)
-                                .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(71, 71, 71))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(224, 224, 224)
                         .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -377,17 +386,49 @@ public class EmployeeAbility extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewDutyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDutyActionPerformed
-        EmployeeViewDuty viewDuty = new EmployeeViewDuty();
+        EmployeeViewDuty viewDuty = new EmployeeViewDuty(staff_id);
         viewDuty.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnViewDutyActionPerformed
 
     private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
-        
+        try {
+            pst = con.prepareStatement("insert into request (staff_id,request_type, status) values (?,?,?);");
+            pst.setString(1, staff_id);
+            pst.setString(2, "leave");
+            pst.setString(3, "waiting");
+            int k = pst.executeUpdate();
+
+            if (k == 1) {
+                JOptionPane.showMessageDialog(this, "Successful");
+                checkRequest();
+            } else {
+                JOptionPane.showMessageDialog(this, "Fail");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeAbility.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnLeaveActionPerformed
 
     private void btnOverdutyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOverdutyActionPerformed
+        try {
+            pst = con.prepareStatement("insert into request (staff_id,request_type, status) values (?,?,?);");
+            
+            pst.setString(1, staff_id);
+            pst.setString(2, "overduty");
+            pst.setString(3, "waiting");
+            
+            int k = pst.executeUpdate();
 
+            if (k == 1) {
+                JOptionPane.showMessageDialog(this, "Successful");
+                checkRequest();
+            } else {
+                JOptionPane.showMessageDialog(this, "Fail");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeAbility.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnOverdutyActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
@@ -401,7 +442,28 @@ public class EmployeeAbility extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
+        try {
+            String fullName = txtFirstName.getText()+ " "+ txtLastName.getText();
+            String dob = txtDob.getText();
+            String identity = txtIdentity.getText();
+            
+            pst = con.prepareStatement("update staff set staff_name = ?, dob =?, identity =? where staff_id =?");
+            pst.setString(1, fullName);
+            pst.setString(2, dob);
+            pst.setString(3, identity);
+            pst.setString(4, staff_id);
+            
+            int k = pst.executeUpdate();
+            
+            if(k == 1){
+                JOptionPane.showMessageDialog(this, "Update successful");
+                loadStaff();
+            }else{
+                JOptionPane.showMessageDialog(this, "Update fail");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EmployeeAbility.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnEditActionPerformed
 
 
