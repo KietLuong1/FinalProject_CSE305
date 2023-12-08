@@ -28,7 +28,7 @@ public class EmployeeViewDuty extends javax.swing.JFrame {
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "anhkiet2002");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "19102003");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -227,6 +227,7 @@ public class EmployeeViewDuty extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

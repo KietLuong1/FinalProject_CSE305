@@ -30,7 +30,7 @@ public class ManagerAbility extends javax.swing.JFrame {
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "anhkiet2002");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "19102003");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -389,11 +389,11 @@ public class ManagerAbility extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewRoutineActionPerformed
 
     private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
-        fetch("select * from request where leave_type = 'leave'");
+        fetch("select * from request where request_type  = 'leave'");
     }//GEN-LAST:event_btnLeaveActionPerformed
 
     private void btnOverdutyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOverdutyActionPerformed
-        fetch("select * from request where leave_type = 'overduty'");
+        fetch("select * from request where request_type  = 'overduty'");
     }//GEN-LAST:event_btnOverdutyActionPerformed
 
     private void btnSreachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSreachActionPerformed
