@@ -13,8 +13,10 @@ import javax.swing.table.DefaultTableModel;
 
 public class EmployeeViewDuty extends javax.swing.JFrame {
 
-    public EmployeeViewDuty() {
+    private String staff_id;
+    public EmployeeViewDuty(String staff_id) {
         initComponents();
+        this.staff_id = staff_id;
         Connect();
         fetch();
     }
@@ -26,7 +28,7 @@ public class EmployeeViewDuty extends javax.swing.JFrame {
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "anhkiet2002");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -228,7 +230,7 @@ public class EmployeeViewDuty extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        EmployeeAbility employeeAbility = new EmployeeAbility();
+        EmployeeAbility employeeAbility = new EmployeeAbility(staff_id);
         employeeAbility.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed

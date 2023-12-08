@@ -14,10 +14,12 @@ import javax.swing.table.DefaultTableModel;
 
 public class ManagerAbility extends javax.swing.JFrame {
 
+    private boolean isDone;
+
     public ManagerAbility() {
         initComponents();
         Connect();
-        fetch("select * from leave_request;");
+        fetch("select * from request;");
         loadStaff();
     }
 
@@ -28,7 +30,7 @@ public class ManagerAbility extends javax.swing.JFrame {
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "anhkiet2002");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -67,8 +69,9 @@ public class ManagerAbility extends javax.swing.JFrame {
 
     public void loadStaff() {
         try {
-            pst = con.prepareStatement("select staff_id from duty_schedule;");
+            pst = con.prepareStatement("select distinct staff_id from request;");
             rs = pst.executeQuery();
+            cmbxEmpID.removeAllItems();
 
             while (rs.next()) {
                 cmbxEmpID.addItem(rs.getString(1));
@@ -386,47 +389,60 @@ public class ManagerAbility extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewRoutineActionPerformed
 
     private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
-        fetch("select * from leave_request where leave_type = 'leave'");
+        fetch("select * from request where leave_type = 'leave'");
     }//GEN-LAST:event_btnLeaveActionPerformed
 
     private void btnOverdutyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOverdutyActionPerformed
-        fetch("select * from leave_request where leave_type = 'overduty'");
+        fetch("select * from request where leave_type = 'overduty'");
     }//GEN-LAST:event_btnOverdutyActionPerformed
 
     private void btnSreachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSreachActionPerformed
-        fetch("select * from leave_request where staff_id=" + cmbxEmpID.getSelectedItem().toString());
+            fetch("select * from request where staff_id=" + cmbxEmpID.getSelectedItem().toString());
     }//GEN-LAST:event_btnSreachActionPerformed
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
-        fetch("select * from leave_request;");
+        fetch("select * from request;");
     }//GEN-LAST:event_btnShowAllActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        try {
-            pst = con.prepareStatement("update leave_request set is_approved=1");
-            int k = pst.executeUpdate();
-            if (k == 1) {
-                JOptionPane.showMessageDialog(this, "Success!!");
-            } else {
-                JOptionPane.showMessageDialog(this, "Fail!!");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ManagerAbility.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                String staff_id = cmbxEmpID.getSelectedItem().toString();
+
+                pst = con.prepareStatement("update request set status= 'approved' where staff_id=? and status = 'waiting'");
+                pst.setString(1, staff_id);
+                int k = pst.executeUpdate();
+
+                if (k == 1) {
+                    JOptionPane.showMessageDialog(this, "Success!!");
+                    new EmployeeAbility(staff_id).checkRequest();
+                    fetch("select * from request;");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Fail!!");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ManagerAbility.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineActionPerformed
-        try {
-            pst = con.prepareStatement("update leave_request set is_approved=0");
-            int k = pst.executeUpdate();
-            if (k == 1) {
-                JOptionPane.showMessageDialog(this, "Success!!");
-            } else {
-                JOptionPane.showMessageDialog(this, "Fail!!");
+            try {
+                String staff_id = cmbxEmpID.getSelectedItem().toString();
+
+                pst = con.prepareStatement("update request set status= 'decline' where staff_id=? and status = 'waiting'");
+                pst.setString(1, staff_id);
+                int k = pst.executeUpdate();
+                if (k == 1) {
+                    JOptionPane.showMessageDialog(this, "Success!!");
+                    new EmployeeAbility(staff_id).checkRequest();
+                    fetch("select * from request;");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Fail!!");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ManagerAbility.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ManagerAbility.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_btnDeclineActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
