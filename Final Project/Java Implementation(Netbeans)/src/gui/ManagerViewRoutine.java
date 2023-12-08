@@ -1,11 +1,8 @@
 package gui;
 
-import entity.SecurityStaff;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+import connection.SecurityConnection;
+import date_chooser.Chooser;
+import java.sql.*;
 import java.sql.SQLException;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -15,32 +12,25 @@ import javax.swing.table.DefaultTableModel;
 
 public class ManagerViewRoutine extends javax.swing.JFrame {
 
+    private Chooser date;
+
     public ManagerViewRoutine() {
         initComponents();
-        Connect();
+        con = new SecurityConnection().Connect();
+        date = new Chooser();
+        date.defaultFormat(txtDate);
         fetch("select * from duty_schedule");
-    loadStaff();
+        loadStaff();
+        loadPlace();
     }
 
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
 
-    public void Connect() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "19102003");
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     public void loadStaff() {
         try {
-            pst = con.prepareStatement("select staff_id from duty_schedule;");
+            pst = con.prepareStatement("select staff_id from staff;");
             rs = pst.executeQuery();
             cmbxEmpID.removeAllItems();
 
@@ -51,7 +41,21 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
             Logger.getLogger(ManagerViewRoutine.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    public void loadPlace() {
+        try {
+            pst = con.prepareStatement("select place_id from security_place;");
+            rs = pst.executeQuery();
+            cmbxPlaceID.removeAllItems();
+
+            while (rs.next()) {
+                cmbxPlaceID.addItem(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerViewRoutine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void fetch(String query) {
         try {
             pst = con.prepareStatement(query);
@@ -79,6 +83,7 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
             Logger.getLogger(ManagerViewRoutine.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -101,12 +106,12 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtDate = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtPlace = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtStartTime = new javax.swing.JTextField();
         txtEndTime = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
+        cmbxPlaceID = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -248,8 +253,6 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel10.setText("Place ID");
 
-        txtPlace.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel11.setText("Start Time");
 
@@ -279,9 +282,9 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                    .addComponent(cmbxPlaceID, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -312,10 +315,10 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPlace, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEndTime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(txtEndTime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbxPlaceID, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -344,7 +347,7 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewRoutineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRoutineActionPerformed
-        fetch("select * from duty_schedule where staff_id=?" + cmbxEmpID.getSelectedItem().toString());  
+        fetch("select * from duty_schedule where staff_id=?" + cmbxEmpID.getSelectedItem().toString());
     }//GEN-LAST:event_btnViewRoutineActionPerformed
 
     private void btnCreateRoutineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRoutineActionPerformed
@@ -354,8 +357,8 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
 
             pst = con.prepareStatement("insert into duty_schedule (staff_id, place_id, duty_date, start_time, end_time) values (?,?,?,?,?);");
             pst.setString(1, cmbxEmpID.getSelectedItem().toString());
-            pst.setString(2, txtPlace.getText());
-            pst.setString(3, txtDate.getText());
+            pst.setString(2, cmbxPlaceID.getSelectedItem().toString());
+            pst.setString(3, date.formatDateToSQL(txtDate.getText()));
             pst.setString(4, txtStartTime.getText());
             pst.setString(5, txtEndTime.getText());
 
@@ -364,11 +367,15 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
             if (k == 1) {
                 JOptionPane.showMessageDialog(this, "Successful");
                 fetch("select * from duty_schedule;");
+                loadStaff();
+                loadPlace();
+                txtStartTime.setText("");
+                txtEndTime.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "Unsuccessful");
             }
         } catch (Exception e) {
-            Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(ManagerViewRoutine.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_btnCreateRoutineActionPerformed
 
@@ -388,6 +395,7 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnViewRoutine;
     private javax.swing.JComboBox<String> cmbxEmpID;
+    private javax.swing.JComboBox<String> cmbxPlaceID;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -405,7 +413,6 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
     private javax.swing.JTable tblDuty;
     private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtEndTime;
-    private javax.swing.JTextField txtPlace;
     private javax.swing.JTextField txtStartTime;
     // End of variables declaration//GEN-END:variables
 }

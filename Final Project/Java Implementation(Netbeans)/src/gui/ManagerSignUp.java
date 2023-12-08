@@ -5,14 +5,13 @@
  */
 package gui;
 
-import entity.*;
+import connection.SecurityConnection;
+import date_chooser.Chooser;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,7 +21,7 @@ import javax.swing.JOptionPane;
  * @author vinay
  */
 public class ManagerSignUp extends javax.swing.JFrame {
-
+    private Chooser date;
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
@@ -32,19 +31,9 @@ public class ManagerSignUp extends javax.swing.JFrame {
      */
     public ManagerSignUp() {
         initComponents();
-        connect();
-    }
-
-    public void connect() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_305", "root", "19102003");
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        con = new SecurityConnection().Connect();
+        date = new Chooser();
+        date.defaultFormat(txtDob);
     }
 
     /**
@@ -334,7 +323,7 @@ public class ManagerSignUp extends javax.swing.JFrame {
             pst.setString(1, lastName.concat(" ").concat(firstName));
             pst.setString(2, username);
             pst.setString(3, password);
-            pst.setString(4, dob);
+            pst.setString(4, date.formatDateToSQL(dob));
             pst.setString(5, id);
             pst.setString(6, "0");
 
@@ -356,7 +345,7 @@ public class ManagerSignUp extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Sign up fail");
             }
         } catch (Exception e) {
-            Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(ManagerSignUp.class.getName()).log(Level.SEVERE, null, e);
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
