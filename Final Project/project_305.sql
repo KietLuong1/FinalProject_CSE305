@@ -78,6 +78,8 @@ CREATE TABLE `manager` (
   `manager_name` varchar(255) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   `username` varchar(45) DEFAULT NULL,
+  `idenity` int DEFAULT NULL,
+  `dob` date DEFAULT NULL,
   PRIMARY KEY (`manager_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -129,6 +131,9 @@ CREATE TABLE `staff` (
   `manager_id` int DEFAULT NULL,
   `place_id` int DEFAULT NULL,
   `salary` int DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `identity` int DEFAULT NULL,
+  `username` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`staff_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -151,4 +156,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-08  7:56:20
+-- Dump completed on 2023-12-08  9:11:30
