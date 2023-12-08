@@ -241,9 +241,6 @@ public class FirstPage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnManagerSignUpActionPerformed
 
-    public static void main(String args[]) {
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEmployeeLogin;

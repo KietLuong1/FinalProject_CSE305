@@ -4,25 +4,29 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 public class EmployeeViewDuty extends javax.swing.JFrame {
 
     public EmployeeViewDuty() {
         initComponents();
         Connect();
+        fetch();
     }
 
-    Connection connect;
+    Connection con;
     PreparedStatement pst;
-    ResultSet result;
+    ResultSet rs;
 
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "", "");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -31,6 +35,33 @@ public class EmployeeViewDuty extends javax.swing.JFrame {
         }
     }
 
+    public void fetch() {
+        try {
+            pst = con.prepareStatement("select * from duty_schedule");
+            rs = pst.executeQuery();
+            ResultSetMetaData ress = rs.getMetaData();
+            int colCount = ress.getColumnCount();
+
+            DefaultTableModel df = new DefaultTableModel();
+            df.setRowCount(0);
+
+            for (int i = 1; i <= colCount; i++) {
+                df.addColumn(ress.getColumnName(i));
+            }
+
+            while (rs.next()) {
+                Vector row = new Vector();
+
+                for (int i = 1; i <= colCount; i++) {
+                    row.add(rs.getObject(i));
+                }
+                df.addRow(row);
+            }
+            tblDuty.setModel(df);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerViewRoutine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -129,13 +160,13 @@ public class EmployeeViewDuty extends javax.swing.JFrame {
         tblDuty.setForeground(new java.awt.Color(102, 102, 102));
         tblDuty.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Date", "Place", "Start Time", "End Time"
+
             }
         ));
         jScrollPane1.setViewportView(tblDuty);
@@ -199,16 +230,13 @@ public class EmployeeViewDuty extends javax.swing.JFrame {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         EmployeeAbility employeeAbility = new EmployeeAbility();
         employeeAbility.setVisible(true);
-        dispose();;
+        dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
-    public static void main(String args[]) {
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

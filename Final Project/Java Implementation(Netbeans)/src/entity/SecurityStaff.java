@@ -37,10 +37,6 @@ public class SecurityStaff extends Staff {
     public SecurityStaff(String firstName, String lastName, String identityNumber, String password, String dob, String staff_id) {
         super(firstName, lastName, identityNumber, password, dob);
         connect();
-        register();
-        login();
-        viewDuty();
-        requestLeave();
         this.staff_id = staff_id;
 
     }
@@ -57,42 +53,20 @@ public class SecurityStaff extends Staff {
         }
     }
 
-    public void register() {
-        int id;
+    public boolean register() {
         try {
             pst = con.prepareStatement("select * from staff;");
             rs = pst.executeQuery();
 
-            String s = "";
-
-            if (rs.next() == false) {
-                id = 1;
-            } else {
-                do {
-                    s = rs.getString(1);
-                } while (rs.next() == true);
-
-                String s1 = s.substring(0, s.length());
-                id = Integer.parseInt(s1) + 1;
-            }
-            pst = con.prepareStatement("insert into staff (staff_id,name, password) values (?,?,?)");
-            pst.setString(1, String.valueOf(id));
+            pst = con.prepareStatement("insert into staff (name, password) values (?,?,?)");
             pst.setString(2, firstName.concat(" ").concat(lastName));
             pst.setString(4, password);
 
             int k = pst.executeUpdate();
 
-            pst = con.prepareStatement("insert into user (user_id, name, identity, password, dob) values (?,?,?,?,?);");
-            pst.setString(1, String.valueOf(id));
-            pst.setString(2, firstName.concat(" ").concat(lastName));
-            pst.setString(3, identityNumber);
-            pst.setString(4, password);
-            pst.setString(5, dob);
-
-            int k2 = pst.executeUpdate();
-
-            if (k == 1 && k2 == 1) {
-                JOptionPane.showMessageDialog(null, "Sign up successfully" + "Your Staff_ID is: " + id);
+            if (k == 1) {
+                JOptionPane.showMessageDialog(null, "Sign up successfully");
+                return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Sign up falied");
             }
@@ -100,64 +74,47 @@ public class SecurityStaff extends Staff {
         } catch (Exception e) {
             Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, e);
         }
+        return false;
     }
 
-    public void login() {
+    public boolean login() {
         try {
             pst = con.prepareStatement("select * from staff where staff_id = '" + staff_id + "'and staff_password = '" + password + "'");
             rs = pst.executeQuery();
 
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Login successfully");
-                EmployeeAbility emp = new EmployeeAbility();
-                emp.setVisible(true);
-                emp.pack();
+                return true;
             } else {
                 JOptionPane.showMessageDialog(null, "Login failed");
             }
         } catch (Exception e) {
             Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, e);
-
         }
+        return false;
     }
 
-    public void viewDuty() {
+    public ResultSet viewDuty() {
         try {
-            
             pst = con.prepareStatement("select place_id, duty_date, start_time, end_time from duty_schdule where user_id =?;");
             pst.setString(1, staff_id);
+            rs = pst.executeQuery();
 
-            int k = pst.executeUpdate();
-
-            if (k == 1) {
+            if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Successfully");
+                return rs;
             } else {
                 JOptionPane.showMessageDialog(null, "No record found");
             }
 
         } catch (Exception e) {
         }
+        return null;
     }
 
-    public void requestLeave() {
-        int id;
+    public boolean requestLeave() {
         try {
-            pst = con.prepareStatement("select * from leave_request;");
-            rs = pst.executeQuery();
-
-            String s = "";
-
-            if (rs.next() == false) {
-                id = 1;
-            } else {
-                do {
-                    s = rs.getString(1);
-                } while (rs.next() == true);
-
-                String s1 = s.substring(0, s.length());
-                id = Integer.parseInt(s1) + 1;
-            }
-            pst = con.prepareStatement("insert into leave_request user_id values (?)");
+            pst = con.prepareStatement("insert into leave_request staff_id values (?)");
             pst.setString(1, staff_id);
 
             int k = pst.executeUpdate();
@@ -166,6 +123,7 @@ public class SecurityStaff extends Staff {
                 if (leaveTaken < totalLeaveAllowed) {
                     JOptionPane.showMessageDialog(null, "Successfully!");
                     leaveTaken++;
+                    return true;
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed!");
                 }
@@ -174,5 +132,7 @@ public class SecurityStaff extends Staff {
             }
         } catch (Exception e) {
         }
+        return false;
     }
+
 }

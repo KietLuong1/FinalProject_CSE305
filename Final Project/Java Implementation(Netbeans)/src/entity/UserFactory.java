@@ -32,8 +32,8 @@ public interface UserFactory {
 
     class ManagerFactory implements UserFactory {
 
-        public Staff createUser(String firstName, String lastName, String identityNumber, String password, String dob) {
-            return new SecurityManager(firstName, lastName, identityNumber, password, dob, dob);
+        public Staff createUser(String firstName, String lastName, String identityNumber, String username, String password, String dob) {
+            return new SecurityManager(firstName, lastName, identityNumber, username, password, dob, dob);
         }
 
         @Override
