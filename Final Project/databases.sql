@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: campus_security_management
+-- Host: localhost    Database: database
 -- ------------------------------------------------------
 -- Server version	8.0.34
 
@@ -160,7 +160,7 @@ CREATE TABLE `user` (
   `name` varchar(45) NOT NULL,
   `identity` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `user_type` varchar(45) NOT NULL,
+  `dob` date DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `identity_UNIQUE` (`identity`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -184,4 +184,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-06 16:06:19
+-- Dump completed on 2023-12-08  7:29:56
