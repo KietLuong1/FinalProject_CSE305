@@ -4,30 +4,77 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ManagerAbility extends javax.swing.JFrame {
 
     public ManagerAbility() {
         initComponents();
         Connect();
+        fetch("select * from leave_request;");
+        loadStaff();
     }
 
-    Connection connect;
+    Connection con;
     PreparedStatement pst;
-    ResultSet result;
+    ResultSet rs;
 
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "", "");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void fetch(String query) {
+        try {
+            pst = con.prepareStatement(query);
+            rs = pst.executeQuery();
+            ResultSetMetaData ress = rs.getMetaData();
+            int colCount = ress.getColumnCount();
+
+            DefaultTableModel df = new DefaultTableModel();
+            df.setRowCount(0);
+
+            for (int i = 1; i <= colCount; i++) {
+                df.addColumn(ress.getColumnName(i));
+            }
+
+            while (rs.next()) {
+                Vector row = new Vector();
+
+                for (int i = 1; i <= colCount; i++) {
+                    row.add(rs.getObject(i));
+                }
+                df.addRow(row);
+            }
+            tblInformation.setModel(df);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerViewRoutine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void loadStaff() {
+        try {
+            pst = con.prepareStatement("select staff_id from duty_schedule;");
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+                cmbxEmpID.addItem(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerViewRoutine.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -65,13 +112,13 @@ public class ManagerAbility extends javax.swing.JFrame {
         tblInformation.setForeground(new java.awt.Color(102, 102, 102));
         tblInformation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Employee ID", "Employee Name", "Tasks", "Salary", "Status"
+
             }
         ));
         jScrollPane1.setViewportView(tblInformation);
@@ -141,7 +188,7 @@ public class ManagerAbility extends javax.swing.JFrame {
         btnViewRoutine.setBackground(new java.awt.Color(100, 169, 238));
         btnViewRoutine.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btnViewRoutine.setForeground(new java.awt.Color(255, 255, 255));
-        btnViewRoutine.setText("View Routine");
+        btnViewRoutine.setText("Routine");
         btnViewRoutine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewRoutineActionPerformed(evt);
@@ -334,38 +381,56 @@ public class ManagerAbility extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewRoutineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRoutineActionPerformed
-        ManagerViewRoutine viewRoutine = new ManagerViewRoutine();
-        viewRoutine.setVisible(true);
-        dispose();;
+        new ManagerViewRoutine().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnViewRoutineActionPerformed
 
     private void btnLeaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaveActionPerformed
-
+        fetch("select * from leave_request where leave_type = 'leave'");
     }//GEN-LAST:event_btnLeaveActionPerformed
 
     private void btnOverdutyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOverdutyActionPerformed
-
+        fetch("select * from leave_request where leave_type = 'overduty'");
     }//GEN-LAST:event_btnOverdutyActionPerformed
 
     private void btnSreachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSreachActionPerformed
-
+        fetch("select * from leave_request where staff_id=" + cmbxEmpID.getSelectedItem().toString());
     }//GEN-LAST:event_btnSreachActionPerformed
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
-
+        fetch("select * from leave_request;");
     }//GEN-LAST:event_btnShowAllActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-
+        try {
+            pst = con.prepareStatement("update leave_request set is_approved=1");
+            int k = pst.executeUpdate();
+            if (k == 1) {
+                JOptionPane.showMessageDialog(this, "Success!!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Fail!!");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerAbility.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineActionPerformed
-
+        try {
+            pst = con.prepareStatement("update leave_request set is_approved=0");
+            int k = pst.executeUpdate();
+            if (k == 1) {
+                JOptionPane.showMessageDialog(this, "Success!!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Fail!!");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerAbility.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnDeclineActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
-        FirstPage firstPage = new FirstPage();
-        firstPage.setVisible(true);
+        new FirstPage().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnLogOutActionPerformed
 
@@ -373,9 +438,6 @@ public class ManagerAbility extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
-    public static void main(String args[]) {
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;

@@ -1,28 +1,36 @@
 package gui;
 
+import entity.SecurityStaff;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ManagerViewRoutine extends javax.swing.JFrame {
 
     public ManagerViewRoutine() {
         initComponents();
         Connect();
+        fetch("select * from duty_schedule");
+    loadStaff();
     }
 
-    Connection connect;
+    Connection con;
     PreparedStatement pst;
-    ResultSet result;
+    ResultSet rs;
 
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "", "");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeLogin.class.getName()).log(Level.SEVERE, null, ex);
@@ -31,6 +39,46 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
         }
     }
 
+    public void loadStaff() {
+        try {
+            pst = con.prepareStatement("select staff_id from duty_schedule;");
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+                cmbxEmpID.addItem(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerViewRoutine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void fetch(String query) {
+        try {
+            pst = con.prepareStatement(query);
+            rs = pst.executeQuery();
+            ResultSetMetaData ress = rs.getMetaData();
+            int colCount = ress.getColumnCount();
+
+            DefaultTableModel df = new DefaultTableModel();
+            df.setRowCount(0);
+
+            for (int i = 1; i <= colCount; i++) {
+                df.addColumn(ress.getColumnName(i));
+            }
+
+            while (rs.next()) {
+                Vector row = new Vector();
+
+                for (int i = 1; i <= colCount; i++) {
+                    row.add(rs.getObject(i));
+                }
+                df.addRow(row);
+            }
+            tblDuty.setModel(df);
+        } catch (SQLException ex) {
+            Logger.getLogger(ManagerViewRoutine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -173,13 +221,13 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
         tblDuty.setForeground(new java.awt.Color(102, 102, 102));
         tblDuty.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Date", "Place", "Start Time", "End Time"
+
             }
         ));
         jScrollPane1.setViewportView(tblDuty);
@@ -297,26 +345,42 @@ public class ManagerViewRoutine extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewRoutineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRoutineActionPerformed
-
+        fetch("select * from duty_schedule where staff_id=?" + cmbxEmpID.getSelectedItem().toString());  
     }//GEN-LAST:event_btnViewRoutineActionPerformed
 
     private void btnCreateRoutineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRoutineActionPerformed
+        try {
+            pst = con.prepareStatement("select * from duty_schedule;");
+            rs = pst.executeQuery();
 
+            pst = con.prepareStatement("insert into duty_schedule (user_id, place_id, duty_date, start_time, end_time) values (?,?,?,?,?);");
+            pst.setString(1, cmbxEmpID.getSelectedItem().toString());
+            pst.setString(2, txtPlace.getText());
+            pst.setString(3, txtDate.getText());
+            pst.setString(4, txtStartTime.getText());
+            pst.setString(5, txtEndTime.getText());
+
+            int k = pst.executeUpdate();
+
+            if (k == 1) {
+                JOptionPane.showMessageDialog(this, "Successful");
+            } else {
+                JOptionPane.showMessageDialog(this, "Unsuccessful");
+            }
+        } catch (Exception e) {
+            Logger.getLogger(SecurityStaff.class.getName()).log(Level.SEVERE, null, e);
+        }
     }//GEN-LAST:event_btnCreateRoutineActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        ManagerAbility managerAbility = new ManagerAbility();
-        managerAbility.setVisible(true);
-        dispose();;
+        new ManagerAbility().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnExitActionPerformed
 
-    public static void main(String args[]) {
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.Toolkit;
-import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -251,32 +249,23 @@ public class EmployeeLogin extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
         String username = txtUsername.getText();
-        String password = txtPassword.getText();
+        String password = txtPassword.getPassword().toString();
 
         if (username.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Username or Password can not be empty!");
-
         } else {
             try {
-                pst = connect.prepareStatement("SELECT * FROM finalproject.employee WHERE employee_id = ?");
+                pst = connect.prepareStatement("SELECT * FROM staff WHERE username = ? and password =?");
                 pst.setString(1, username);
+                pst.setString(2, password);
                 result = pst.executeQuery();
 
-                while (result.next()) {
-                    String employee_id = result.getString("employee_id");
-                    String dob = result.getString("dob");
-
-                    EmployeeAbility employeeAbility = new EmployeeAbility();
-
-                    if (username.equals(employee_id) && dob.equals(password)) {
-
-                        employeeAbility.setVisible(true);
-
-                        dispose();
-
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Your Username or Your Password is Incorrect!");
-                    }
+                if (result.next()) {
+                    JOptionPane.showMessageDialog(this, "Login successful");
+                    new EmployeeAbility(username).setVisible(true);
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Your Username or Your Password is Incorrect!");
                 }
 
             } catch (SQLException ex) {
@@ -290,7 +279,7 @@ public class EmployeeLogin extends javax.swing.JFrame {
         if (cbxShowPassword.isSelected()) {
             txtPassword.setEchoChar((char) 0);
         } else {
-            txtPassword.setEchoChar('*');
+            txtPassword.setEchoChar('\u2022');
         }
     }//GEN-LAST:event_cbxShowPasswordActionPerformed
 
@@ -309,9 +298,6 @@ public class EmployeeLogin extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    public static void main(String args[]) {
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
