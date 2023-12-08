@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: project_305
+-- Host: 127.0.0.1    Database: project_305
 -- ------------------------------------------------------
 -- Server version	8.0.34
 
@@ -52,7 +52,8 @@ DROP TABLE IF EXISTS `leave_request`;
 CREATE TABLE `leave_request` (
   `request_id` int NOT NULL AUTO_INCREMENT,
   `staff_id` int DEFAULT NULL,
-  `is_approved` tinyint DEFAULT NULL,
+  `leave_type` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`request_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -76,10 +77,10 @@ DROP TABLE IF EXISTS `manager`;
 CREATE TABLE `manager` (
   `manager_id` int NOT NULL AUTO_INCREMENT,
   `manager_name` varchar(255) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
   `username` varchar(45) DEFAULT NULL,
-  `idenity` int DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
   `dob` date DEFAULT NULL,
+  `salary` int DEFAULT NULL,
   PRIMARY KEY (`manager_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -127,14 +128,14 @@ DROP TABLE IF EXISTS `staff`;
 CREATE TABLE `staff` (
   `staff_id` int NOT NULL AUTO_INCREMENT,
   `staff_name` varchar(255) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
-  `manager_id` int DEFAULT NULL,
-  `place_id` int DEFAULT NULL,
-  `salary` int DEFAULT NULL,
-  `dob` date DEFAULT NULL,
-  `identity` int DEFAULT NULL,
   `username` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`staff_id`)
+  `password` varchar(45) DEFAULT NULL,
+  `place_id` int DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `identity` varchar(45) DEFAULT NULL,
+  `salary` int DEFAULT NULL,
+  PRIMARY KEY (`staff_id`),
+  UNIQUE KEY `username_UNIQUE` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -156,4 +157,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-08  9:11:30
+-- Dump completed on 2023-12-08 12:49:46
