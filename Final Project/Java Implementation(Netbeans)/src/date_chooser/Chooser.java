@@ -17,7 +17,7 @@ import javax.swing.JTextField;
  *
  * @author kietl
  */
-public class Chooser {
+public class Chooser extends DateChooser{
 
     private DateChooser date = new DateChooser();
 
@@ -27,7 +27,7 @@ public class Chooser {
     public void defaultFormat(JTextField txt) {
         date.setTextField(txt);
         date.setDateFormat(new SimpleDateFormat("dd-MM-yyyy"));
-        date.setLabelCurrentDayVisible(false);
+        date.setLabelCurrentDayVisible(true);
     }
 
     public String formatDateToSQL(String str) {
@@ -42,4 +42,21 @@ public class Chooser {
         } 
         return null;
     }
+    
+    public String getDateFromSQL(String str) {
+        DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+        try {
+            java.util.Date d = inputFormat.parse(str);
+             return outputFormat.format(d);
+        } catch (ParseException ex) {
+            Logger.getLogger(Chooser.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return null;
+    }
+    
+   public Date toDate(String str){
+       return Date.valueOf(str);
+   }
 }

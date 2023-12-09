@@ -37,6 +37,8 @@ public class EmployeeAbility extends javax.swing.JFrame {
                 txtFirstName.setText(fullName[0]);
                 txtLastName.setText(fullName[1]);
                 txtDob.setText(rs.getString(6));
+                String full = rs.getString(6);
+                txtDob.setText(full);
                 txtIdentity.setText(rs.getString(7));
                 txtSalary.setText(rs.getString(8));
             } else {
@@ -50,7 +52,6 @@ public class EmployeeAbility extends javax.swing.JFrame {
             while (rs.next()) {
                 txtStatus.setText(rs.getString(1));
             }
-            date.defaultFormat(txtDob);
         } catch (SQLException ex) {
             Logger.getLogger(ManagerViewRoutine.class.getName()).log(Level.SEVERE, null, ex);
         }
